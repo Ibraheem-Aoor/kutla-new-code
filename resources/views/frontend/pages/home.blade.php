@@ -791,7 +791,44 @@
 
     @endforeach
 
+     <!-- Featured video  start -->
+     <section class="news10-feature-video-section">
+        <div class="top-bg">
+            <img loading="lazy" src="{{asset('/maan/images/feature-video-bg.svg')}}" alt="">
+        </div>
+        <div class="container-xxl container-lg">
+            <div class="news10-sec-title">
+                <h3>{{ $page_data['headings']['feature_video_title'] ?? '' }}</h3>
+            </div>
+            <div class="video-section-grid">
+                @foreach($latestVideoGalleries as $video)
+                    @if($loop->iteration==1)
+                <div class="card iframe-video-wrapper">
+                    <iframe src="{{asset($video->video)}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div>
+                    @endif
 
+                    <div class="card trending-news-card weekly-review-card">
+                        <div class="card-thumb">
+                            @if($video->image!=null)
+                                <img loading="lazy" src="{{asset($video->image)}}" alt="">
+                            @else
+                            <img loading="lazy" src="{{asset('/maan/images/26.png')}}" alt="">
+                            @endif
+                            <a href="" class="news-ctg-link">{{$video->title}}</a>
+                            <a class="venobox vbox-item" data-autoplay="true" data-vbtype="video" href="{{asset($video->video)}}"><i class="fas fa-play"></i></a>
+                        </div>
+                        <div class="card-body">
+                            <a href="" class="news-title">{{$video->description}}</a>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+        </div>
+    </section>
+    <!-- Featured video  end -->
+
+    
     {{--<!-- Maan Video News Start -->
     <section class="maan-video-news-section maan-slide-section">
         <div class="container">
