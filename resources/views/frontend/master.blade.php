@@ -74,7 +74,6 @@
 </head>
 
 <body class="{{ $settings->theme_color ?? 'theme-blue' }}">
-
     <div id="main-wrapper">
         @empty($headers)
             <!-- Maan Top Bar Start -->

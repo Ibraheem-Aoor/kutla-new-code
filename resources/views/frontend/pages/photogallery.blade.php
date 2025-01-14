@@ -201,7 +201,7 @@
                     <div class="maan-widgets">
                         <div class="widgets-tags">
                             <ul>
-                                <li><a href="{{route('home')}}">{{ __('Home') }}</a></li>
+                                {{-- <li><a href="{{route('home')}}">{{ __('Home') }}</a></li>
                                 <li><a href="{{ route('national') }}">{{ __('National') }}</a></li>
                                 <li><a href="{{ route('business') }}">{{ __('Business') }}</a></li>
                                 <li><a href="{{ route('world') }}">{{ __('World') }}</a></li>
@@ -209,7 +209,7 @@
                                 <li><a href="{{ route('technology') }}">{{ __('Technology') }}</a></li>
                                 <li><a href="{{ route('lifestyle') }}">{{ __('Lifestyle') }}</a></li>
                                 <li><a href="{{ route('entertainment') }}">{{ __('Entertainment') }}</a></li>
-                                <li><a href="{{ route('sports') }}">{{ __('Sports') }}</a></li>
+                                <li><a href="{{ route('sports') }}">{{ __('Sports') }}</a></li> --}}
                             </ul>
                         </div>
                     </div>

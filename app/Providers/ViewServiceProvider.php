@@ -28,29 +28,33 @@ class ViewServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        if (file_exists(base_path('storage/installed')))
-        {
+        if (file_exists(base_path('storage/installed'))) {
             if (Schema::hasTable('seooptimizations')) {
-                View::share('seooptimization',Seooptimization::first());
+                View::share('seooptimization', Seooptimization::first());
             }
             if (Schema::hasTable('settings')) {
-                View::share('settings',Settings::first());
+                View::share('settings', Settings::first());
             }
             if (Schema::hasTable('socialshares')) {
-                View::share('socials',Socialshare::take(5)->get());
+                View::share('socials', Socialshare::take(5)->get());
             }
             if (Schema::hasTable('themes')) {
-                View::share('themes',Theme::where('is_active',1)->first());
+                View::share('themes', Theme::where('is_active', 1)->first());
             }
             if (Schema::hasTable('advertisements')) {
-                View::share('advertisement',Advertisement::latest()->first());
+                View::share('advertisement', Advertisement::latest()->first());
             }
             if (Schema::hasTable('newscategories')) {
-                View::share('menus',Newscategory::where('type','news')->orderBy('id')->get());
+                View::share('menus', Newscategory::where('type', 'news')->orderBy('id')->get());
             }
             if (Schema::hasTable('newscategories')) {
-                View::share('homeContactus',Newscategory::whereIn('type',['home','contact'] )->orderBy('id')->get());
+                View::share('homeContactus', Newscategory::whereIn('type', ['home', 'contact'])->orderBy('id')->get());
             }
         }
+        View::share(
+            'locale',
+            app()->getLocale(),
+        );
+        
     }
 }

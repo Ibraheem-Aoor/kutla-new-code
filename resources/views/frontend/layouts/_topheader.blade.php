@@ -33,8 +33,9 @@
         hour = updateTime(hour);
         min = updateTime(min);
         sec = updateTime(sec);
-        var midday = "AM";
-        midday = (hour >= 12) ? "PM" : "AM";
+        var midday = "{{ $locale == 'ar' ? 'صباحا' : 'AM' }}";
+        var night = "{{ $locale == 'ar' ? 'مساء' : 'PM' }}";
+        midday = (hour >= 12) ? night: midday;
         hour = (hour == 0) ? 12 : ((hour > 12) ? (hour - 12): hour);
         document.getElementById("clock").innerText = hour + " : " + min + " : " + sec + " " + midday; /* adding time to the div */
         var t = setTimeout(function(){ currentTime() }, 1000); /* setting timer */

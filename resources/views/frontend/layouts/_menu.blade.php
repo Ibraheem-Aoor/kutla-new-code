@@ -105,12 +105,15 @@
                         <span></span>
                     </button>
                     <ul>
-                        <li class="dropdown"><a href="{{route('home')}}">{{ Str::ucfirst($homeContactus[0]['type']) }}</a>
+                        <li>
+                            <a href="{{ route('home-one') }}">{{ __('home') }} </a>
+                        </li>
+                        {{-- <li class="dropdown"><a href="{{route('home')}}">{{ Str::ucfirst($homeContactus[0]['type']) }}</a>
                             <ul class="dropdown-menu">
-                                <li><a href="{{route('home-one')}}">{{ get_option('manage-pages')['headings']['menu_title_one'] ?? '' }}</a></li>
+                                <li><a href="{{route('home-one')}}">{{ __('home') }}</a></li>
                                 <li><a href="{{route('home-two')}}">{{ get_option('manage-pages')['headings']['menu_title_two'] ?? '' }}</a></li>
                             </ul>
-                        </li>
+                        </li> --}}
                         {{--start menu dynamic--}}
                         @include('frontend.layouts._menu_one')
                         {{--end menu dynamic--}}

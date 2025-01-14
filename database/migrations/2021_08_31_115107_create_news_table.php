@@ -22,12 +22,12 @@ class CreateNewsTable extends Migration
             $table->integer('status')->default(0);
             $table->integer('breaking_news')->default(0);
             $table->date('date');
-            $table->string('tags',50)->nullable();
+            $table->longText('tags')->nullable();
             $table->unsignedBigInteger('speciality_id');
             $table->string('image')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->integer('archive')->default(0);
-            $table->integer('viewers')->default(0);
+            $table->integer('viewers')->default(value: 0);
             $table->string('meta_keyword')->nullable();
             $table->string('meta_description')->nullable();
             $table->timestamps();

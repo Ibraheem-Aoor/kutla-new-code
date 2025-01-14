@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
             HeaderSeeder::class,
             NewsCategorySeeder::class,
             NewsSubCategorySeeder::class,
-            NewsSeeder::class,
+            // NewsSeeder::class,
             NewsSpecialitySeeder::class,
             PhotoGallerySeeder::class,
             SeoOptimizeSeeder::class,

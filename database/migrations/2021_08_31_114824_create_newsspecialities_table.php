@@ -19,18 +19,6 @@ class CreateNewsspecialitiesTable extends Migration
             $table->integer('status')->default(1);
             $table->timestamps();
         });
-        $newsspeciality = new \App\Models\Newsspeciality();
-        $newsspeciality->name = 'Top News' ;
-        $newsspeciality->save();
-        $newsspeciality = new \App\Models\Newsspeciality();
-        $newsspeciality->name = 'Top Sliding News' ;
-        $newsspeciality->save();
-        $newsspeciality = new \App\Models\Newsspeciality();
-        $newsspeciality->name = 'Details News' ;
-        $newsspeciality->save();
-        $newsspeciality = new \App\Models\Newsspeciality();
-        $newsspeciality->name = 'None' ;
-        $newsspeciality->save();
 
     }
 
