@@ -49,7 +49,7 @@ Route::middleware(['throttle:web-user'])->group(function () {
     Route::get('/photogallery/details/{id}/{slug?}', [\App\Http\Controllers\Frontend\PhotogalleryController::class, 'maanPhotogalleryDetails'])->name('photogallery.details');
 
     Route::get('categories/{category_slug}/{category_name}', [\App\Http\Controllers\Frontend\NewsController::class, 'maanNews'])->name('categories.item');
-    Route::get('{category_name}/details/{id}/{slug?}', [\App\Http\Controllers\Frontend\NewsController::class, 'maanNewsDetails'])->name('news.details');
+    Route::get('/post/{post}/{slug}', [\App\Http\Controllers\Frontend\NewsController::class, 'maanNewsDetails'])->name('news.details');
 
     // route news comments
     Route::post('news/comment/{id?}', [\App\Http\Controllers\Frontend\NewsController::class, 'maanNewsComment'])->name('news.comment');

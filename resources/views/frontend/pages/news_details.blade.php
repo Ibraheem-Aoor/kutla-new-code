@@ -306,7 +306,7 @@
                                     @if($images!='')
                                         @foreach ($images as $image)
                                             @if (File::exists($image))
-                                                <a href="{{ route('news.details', ['category_name' => $relatednews->news_categoryslug, 'id' => $relatednews->id, 'slug' => Str::slug($relatednews->title)]) }}">
+                                                <a href="{{ return_post_link($relatednews) }}">
                                                     <img loading="lazy" src="{{ asset($image) }}" alt="top-news">
                                                 </a>
                                             @endif
@@ -319,7 +319,7 @@
                             <div class="card-body maan-card-body">
                                 <div class="maan-text">
                                     <h4>
-                                        <a href="{{ route('news.details', ['category_name' => $relatednews->news_categoryslug, 'id' => $relatednews->id, 'slug' => Str::slug($relatednews->title)]) }}">{{ $relatednews->title }}
+                                        <a href="{{ return_post_link($relatednews) }}">{{ $relatednews->title }}
                                         </a>
                                     </h4>
                                     <ul>

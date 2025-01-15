@@ -62,19 +62,19 @@ class NewsController extends Controller
         return view('frontend.pages.news',compact('allnews','popularallnews','recentallnews','newscategorysingle'));
     }
 
-    public function maanNewsDetails($category_name, $id, $slug = null)
+    public function maanNewsDetails($post, $slug = null)
     {
-        $viewers = News::where('id',$id)->value('viewers');
+        $viewers = News::where('id',$post)->value('viewers');
         $data['viewers'] = $viewers +1 ;
 
-        News::where('id',$id)->update($data) ;
-        $newscomments = Newscomment::where('news_id',$id)->paginate(20);
+        News::where('id',$post)->update($data) ;
+        $newscomments = Newscomment::where('news_id',$post)->paginate(20);
 
         $getnews = News::join('newssubcategories','news.subcategory_id','=','newssubcategories.id')
                     ->join('newscategories','newssubcategories.category_id','=','newscategories.id')
                     ->join('users','news.reporter_id','=','users.id')
                     ->select('news.id','news.title','news.summary','news.description','news.meta_keyword','news.meta_description','news.image','news.date','newssubcategories.name as news_subcategory','newscategories.name as news_category','newscategories.slug as news_categoryslug',DB::raw("CONCAT(users.first_name,' ',users.last_name) AS reporter_name"))
-                    ->where('news.id', $id)
+                    ->where('news.id', $post)
                     ->where('news.status', 1)
                     ->first();
 
@@ -82,7 +82,7 @@ class NewsController extends Controller
                             ->join('newscategories','newssubcategories.category_id','=','newscategories.id')
                             ->join('users','news.reporter_id','=','users.id')
                             ->select('news.id','news.title','news.summary','news.image','news.date','newscategories.slug as news_categoryslug',DB::raw("CONCAT(users.first_name,' ',users.last_name) AS reporter_name"))
-                            ->where('news.id','!=',$id)
+                            ->where('news.id','!=',$post)
                             ->where('news.status',1)
                             ->where('newscategories.name', $getnews->news_category)
                             ->orderByDesc('news.id')

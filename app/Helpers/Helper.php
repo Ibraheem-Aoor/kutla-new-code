@@ -13,31 +13,30 @@ use \App\Models\Seooptimization;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
-function cache_remember(string $key, callable $callback, int $ttl = 1800): mixed {
+function cache_remember(string $key, callable $callback, int $ttl = 1800): mixed
+{
     return cache()->remember($key, env('CACHE_LIFETIME', $ttl), $callback);
 }
 
-function get_option($key) {
+function get_option($key)
+{
     return cache_remember($key, function () use ($key) {
         return Option::where('key', $key)->first()->value ?? [];
     });
 }
 
-function imageUpload($image, $imageDirectory, $existFileUrl=null,$name=null)
+function imageUpload($image, $imageDirectory, $existFileUrl = null, $name = null)
 {
-    if ($image)
-    {
-        if (file_exists($existFileUrl))
-        {
+    if ($image) {
+        if (file_exists($existFileUrl)) {
             unlink($existFileUrl);
         }
-        $fileName = $name.'.'.$image->getClientOriginalExtension();
+        $fileName = $name . '.' . $image->getClientOriginalExtension();
         //$fileName = $image;
         $image->move($imageDirectory, $fileName);
-        $fileUrl = $imageDirectory.$fileName;
+        $fileUrl = $imageDirectory . $fileName;
     } else {
-        if (isset($existFileUrl))
-        {
+        if (isset($existFileUrl)) {
             $fileUrl = $existFileUrl;
         } else {
             $fileUrl = '';
@@ -45,30 +44,33 @@ function imageUpload($image, $imageDirectory, $existFileUrl=null,$name=null)
     }
     return $fileUrl;
 }
-function breakingnews(){
-    $breakingnews = News::join('newssubcategories','news.subcategory_id','=','newssubcategories.id')
-        ->join('newscategories','newssubcategories.category_id','=','newscategories.id')
-        ->select('news.id','news.title','news.created_at','newscategories.name as news_category','newscategories.slug as news_categoryslug')
-        ->where('news.breaking_news',1)
-        ->where('news.status',1)
+function breakingnews()
+{
+    $breakingnews = News::join('newssubcategories', 'news.subcategory_id', '=', 'newssubcategories.id')
+        ->join('newscategories', 'newssubcategories.category_id', '=', 'newscategories.id')
+        ->select('news.id', 'news.title', 'news.created_at', 'newscategories.name as news_category', 'newscategories.slug as news_categoryslug')
+        ->where('news.breaking_news', 1)
+        ->where('news.status', 1)
         ->latest()
         ->get();
     return $breakingnews;
 }
-function popularsnews(){
-    $popularsnews = News::join('newssubcategories','news.subcategory_id','=','newssubcategories.id')
-        ->join('newscategories','newssubcategories.category_id','=','newscategories.id')
-        ->join('users','news.reporter_id','=','users.id')
-        ->select('news.id','news.title','news.image','news.date','newscategories.name as news_category','newscategories.slug as news_categoryslug',DB::raw("CONCAT(users.first_name,' ',users.last_name) AS reporter_name"))
-        ->where('news.status',1)
+function popularsnews()
+{
+    $popularsnews = News::join('newssubcategories', 'news.subcategory_id', '=', 'newssubcategories.id')
+        ->join('newscategories', 'newssubcategories.category_id', '=', 'newscategories.id')
+        ->join('users', 'news.reporter_id', '=', 'users.id')
+        ->select('news.id', 'news.title', 'news.image', 'news.date', 'newscategories.name as news_category', 'newscategories.slug as news_categoryslug', DB::raw("CONCAT(users.first_name,' ',users.last_name) AS reporter_name"))
+        ->where('news.status', 1)
         ->orderByDesc('news.viewers')
         ->limit(3)
         ->get();
     return $popularsnews;
 }
-function newscategories() {
+function newscategories()
+{
     if (Schema::hasTable('seooptimizations')) {
-            $newscategories = Newscategory::where('type','news')
+        $newscategories = Newscategory::where('type', 'news')
             ->orderBy('id')
             ->get();
         return $newscategories;
@@ -76,66 +78,80 @@ function newscategories() {
         return [];
     }
 }
-function photogalleries(){
-    $photogalleries = Photogallery::where('status',1)
-        ->select('id','image')
+function photogalleries()
+{
+    $photogalleries = Photogallery::where('status', 1)
+        ->select('id', 'image')
         ->orderByDesc('id')
         ->limit(6)
         ->get();
-    return $photogalleries ;
+    return $photogalleries;
 }
-function settings(){
+function settings()
+{
     $settings = Settings::first();
     return $settings;
 }
-function seooptimization(){
+function seooptimization()
+{
     $seooptimization = Seooptimization::first();
-    return $seooptimization ;
+    return $seooptimization;
 }
-function advertisement() {
+function advertisement()
+{
     $advertisement = \App\Models\Advertisement::latest()->first();
-    return $advertisement ;
+    return $advertisement;
 }
-function googleanalytics() {
+function googleanalytics()
+{
     $googleanalytics = \App\Models\Googleanalytic::latest()->get();
-    return $googleanalytics ;
+    return $googleanalytics;
 }
-function home() {
-    $home = Newscategory::where('type','home')->value('name');
-    return $home ;
+function home()
+{
+    $home = Newscategory::where('type', 'home')->value('name');
+    return $home;
 }
-function contactus() {
-    $contactus = Newscategory::where('type','contact')->value('name');
-    return $contactus ;
+function contactus()
+{
+    $contactus = Newscategory::where('type', 'contact')->value('name');
+    return $contactus;
 }
-function socials(){
+function socials()
+{
     $socials = Socialshare::take(5)->get();
     return $socials;
 }
-function headers(){
-    $header = \App\Models\Header::where('status',1)->where('is_active',1)->first();
+function headers()
+{
+    $header = \App\Models\Header::where('status', 1)->where('is_active', 1)->first();
     return $header;
 }
-function menu(){
-    $menu = \App\Models\Menu::where('status',1)->where('is_active',1)->first();
+function menu()
+{
+    $menu = \App\Models\Menu::where('status', 1)->where('is_active', 1)->first();
     return $menu;
 }
-function footer(){
-    $footer = \App\Models\Footer::where('status',1)->where('is_active',1)->first();
+function footer()
+{
+    $footer = \App\Models\Footer::where('status', 1)->where('is_active', 1)->first();
     return $footer;
 }
-function companies(){
-    $companies = \App\Models\Company::where('status',1)->first();
+function companies()
+{
+    $companies = \App\Models\Company::where('status', 1)->first();
     return $companies;
 }
-function themeActivation(){
+function themeActivation()
+{
     if (Schema::hasTable('themes')) {
-      $activeTheme = Theme::where('is_active',1)->first();
-      return $activeTheme;
+        $activeTheme = Theme::where('is_active', 1)->first();
+        return $activeTheme;
     }
 }
 
-function languages() {
+function languages()
+{
     return [
         'en' => ['name' => 'English', 'flag' => 'us'],
         'ar' => ['name' => 'Arabic', 'flag' => 'sa'],
@@ -252,4 +268,14 @@ function languages() {
 function formatted_date(string $date = null, string $format = 'd M, Y'): ?string
 {
     return !empty($date) ? Date::parse($date)->format($format) : null;
+}
+
+
+function return_post_link($post)
+{
+    $post_id = $post->id;
+    $name = str_replace('%', '::', $post->title);
+    $url = (implode('-', explode(' ', $name)));
+    $url = (implode('-', explode('/', $url)));
+    return route('news.details', ['post' =>  $post_id, 'slug' =>  $url]);
 }

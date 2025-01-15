@@ -1,16 +1,15 @@
 @extends('frontend.master')
 @section('meta_content')
-    <meta name="keywords" content="{{ $seooptimization->keywords ?? ''}}">
-    <meta name="title" content="{{ $seooptimization->meta_title ?? ''}}">
-    <meta name="description" content="{{ $seooptimization->meta_description ?? ''}}">
-    <meta name="author" content="{{ $seooptimization->author ?? ''}}">
+    <meta name="keywords" content="{{ $seooptimization->keywords ?? '' }}">
+    <meta name="title" content="{{ $seooptimization->meta_title ?? '' }}">
+    <meta name="description" content="{{ $seooptimization->meta_description ?? '' }}">
+    <meta name="author" content="{{ $seooptimization->author ?? '' }}">
 
-    <meta property="og:keywords" content="{{ $seooptimization->keywords ?? ''}}">
-    <meta property="og:title" content="{{ $seooptimization->meta_title ?? ''}}">
-    <meta property="og:description" content="{{ $seooptimization->meta_description ?? ''}}">
-    <meta property="og:author" content="{{ $seooptimization->author ?? ''}}">
+    <meta property="og:keywords" content="{{ $seooptimization->keywords ?? '' }}">
+    <meta property="og:title" content="{{ $seooptimization->meta_title ?? '' }}">
+    <meta property="og:description" content="{{ $seooptimization->meta_description ?? '' }}">
+    <meta property="og:author" content="{{ $seooptimization->author ?? '' }}">
     <meta property="og:image" content="{{ asset($settings->logo ?? '') }}" />
-
 @endsection
 @push('styles')
     <!-- home2 -->
@@ -22,29 +21,26 @@
     <section class="news10-newtop-news pt-0">
         <div class="container-xxl container-lg">
             <div class="news10-grid-five">
-                @foreach($latestnews as $lastnews)
+                @foreach ($latestnews as $lastnews)
                     <div class="card news10-topnews-card maantop-news-card">
-                        <a href="@if($lastnews->news_categoryslug)
-                                    @if(Route::has(strtolower($lastnews->news_categoryslug)))
-                                        {{ route('news.details', ['category_name' => $lastnews->news_categoryslug, 'id' => $lastnews->id, 'slug' => Str::slug($lastnews->title)]) }}
-                                    @endif
-                                @endif" class="new-card-thumb">
+                        <a href="@if ($lastnews->news_categoryslug) @if (Route::has(strtolower($lastnews->news_categoryslug)))
+                                        {{ return_post_link($lastnews) }} @endif
+                                @endif"
+                            class="new-card-thumb">
                             @php
-                                $images = json_decode($lastnews->image) ;
+                                $images = json_decode($lastnews->image);
                             @endphp
-                            <img loading="lazy" src="{{asset($images[0] ?? '')}}" alt="">
+                            <img loading="lazy" src="{{ asset($images[0] ?? '') }}" alt="">
                         </a>
                         <div class="card-body">
-                            <a href="@if($lastnews->news_categoryslug)
-                                        @if(Route::has(strtolower($lastnews->news_categoryslug)))
-                                            {{ route(strtolower($lastnews->news_categoryslug), [$lastnews->news_category]) }}
-                                        @endif
-                                    @endif" class="news-ctg-link">{{$lastnews->news_category}}</a>
-                            <a href="@if($lastnews->news_categoryslug)
-                                        @if(Route::has(strtolower($lastnews->news_categoryslug)))
-                                            {{ route('news.details', ['category_name' => $lastnews->news_categoryslug, 'id' => $lastnews->id, 'slug' => Str::slug($lastnews->title)]) }}
-                                        @endif
-                                    @endif" class="news-title">{{$lastnews->title}}</a>
+                            <a href="@if ($lastnews->news_categoryslug) @if (Route::has(strtolower($lastnews->news_categoryslug)))
+                                            {{ return_post_link($lastnews) }} @endif
+                                    @endif"
+                                class="news-ctg-link">{{ $lastnews->news_category }}</a>
+                            <a href="@if ($lastnews->news_categoryslug) @if (Route::has(strtolower($lastnews->news_categoryslug)))
+                                            {{ return_post_link($lastnews) }} }} @endif
+                                    @endif"
+                                class="news-title">{{ $lastnews->title }}</a>
                         </div>
                     </div>
                 @endforeach
@@ -60,39 +56,36 @@
                 <h3>{{ $page_data['headings']['trending_news_title'] ?? '' }}</h3>
             </div>
             <div class="layout-4">
-                @foreach($popularsnews as $popularnews)
+                @foreach ($popularsnews as $popularnews)
                     <div class="card trending-news-card">
-                        <a href=" @if($popularnews->news_categoryslug)
-                        @if(Route::has(strtolower($popularnews->news_categoryslug)))
-                         {{ route('news.details', ['category_name' => $popularnews->news_categoryslug, 'id' => $popularnews->id, 'slug' => Str::slug($popularnews->title)]) }}
-                        @endif
-                        @endif" class="card-thumb">
+                        <a href=" @if ($popularnews->news_categoryslug) @if (Route::has(strtolower($popularnews->news_categoryslug)))
+                         {{ return_post_link($popularnews) }} @endif
+                        @endif"
+                            class="card-thumb">
                             @php
 
-                                $image = json_decode($popularnews->image) ;
+                                $image = json_decode($popularnews->image);
 
                             @endphp
-                            <img loading="lazy" src="{{asset($image[0]??null)}}" alt="">
+                            <img loading="lazy" src="{{ asset($image[0] ?? null) }}" alt="">
                         </a>
                         <div class="card-body">
                             <div class="card-meta">
-                                <a href="@if($popularnews->news_categoryslug)
-                                @if(Route::has(strtolower($popularnews->news_categoryslug)))
-                                {{ route( strtolower($popularnews->news_categoryslug),$popularnews->news_category) }}
-                                @endif
-                                @endif" class="news-ctg-link">{{$popularnews->news_category}}</a>
+                                <a href="@if ($popularnews->news_categoryslug) @if (Route::has(strtolower($popularnews->news_categoryslug)))
+                                {{ route(strtolower($popularnews->news_categoryslug), $popularnews->news_category) }} @endif
+                                @endif"
+                                    class="news-ctg-link">{{ $popularnews->news_category }}</a>
                                 @php
                                     $wordCount = str_word_count($popularnews->description);
                                     $minutesToRead = round($wordCount / 200);
                                 @endphp
-                                <span>{{ $minutesToRead }}{{__(' min to Read')}}</span>
+                                <span>{{ $minutesToRead }}{{ __(' min to Read') }}</span>
                             </div>
-                            <a href=" @if($popularnews->news_categoryslug)
-                            @if(Route::has(strtolower($popularnews->news_categoryslug)))
-                            {{ route('news.details', ['category_name' => $popularnews->news_categoryslug, 'id' => $popularnews->id, 'slug' => Str::slug($popularnews->title)]) }}
-                            @endif
-                            @endif" class="news-title">{{$popularnews->title}}</a>
-                            <p>{{ $popularnews->summary}}</p>
+                            <a href=" @if ($popularnews->news_categoryslug) @if (Route::has(strtolower($popularnews->news_categoryslug)))
+                            {{ return_post_link($popularnews) }} }} @endif
+                            @endif"
+                                class="news-title">{{ $popularnews->title }}</a>
+                            <p>{{ $popularnews->summary }}</p>
                         </div>
                     </div>
                 @endforeach
@@ -102,13 +95,13 @@
     <!-- TRENDING NEWS end -->
 
     <!-- promotion  start -->
-@if($advertisement)
-    <section class="promotion-section p-0">
+    @if ($advertisement)
+        <section class="promotion-section p-0">
             <div class="container">
                 {!! $advertisement->before_post_ads !!}
             </div>
-    </section>
-@endif
+        </section>
+    @endif
     <!-- promotion  end -->
 
     <!-- Weekly Review  start -->
@@ -117,52 +110,49 @@
             <div class="news10-sec-title">
                 <h3>
                     {{ $page_data['headings']['weekly_reviews'] ?? '' }}
-                    @if(!empty($latestReviewNews) && isset($latestReviewNews[0]))
-                        {{$latestReviewNews[0]->category->slug}}
+                    @if (!empty($latestReviewNews) && isset($latestReviewNews[0]))
+                        {{ $latestReviewNews[0]->category->slug }}
                     @endif
                 </h3>
-                <a href="@if(!empty($latestReviewNews) && isset($latestReviewNews[0]) && $latestReviewNews[0]->category)
-                    @if(Route::has(strtolower($latestReviewNews[0]->category->slug)))
-                        {{ route('categories.item', ['category_slug' => $latestReviewNews[0]->category->slug, 'category_name' => $latestReviewNews[0]->category->name]) }}
-                    @endif
+                <a
+                    href="@if (!empty($latestReviewNews) && isset($latestReviewNews[0]) && $latestReviewNews[0]->category) @if (Route::has(strtolower($latestReviewNews[0]->category->slug)))
+                        {{ route('categories.item', ['category_slug' => $latestReviewNews[0]->category->slug, 'category_name' => $latestReviewNews[0]->category->name]) }} @endif
                 @endif
             ">
-                {{ __('Show All') }} <i class="far fa-long-arrow-alt-right"></i>
-            </a>
+                    {{ __('Show All') }} <i class="far fa-long-arrow-alt-right"></i>
+                </a>
             </div>
         </div>
         <div class="container-fluid">
             <div class="news10-weekly-review-wrapper swiper-container">
                 <div class="swiper-wrapper">
-                    @foreach($latestReviewNews as $reviewNews)
+                    @foreach ($latestReviewNews as $reviewNews)
                         <div class="swiper-slide">
                             <div class="card trending-news-card weekly-review-card">
                                 <a href="
-                        @if($reviewNews->category->slug)
-                                @if(Route::has(strtolower($reviewNews->category->slug)))
-                                {{ route('news.details', ['category_name' => $reviewNews->news_categoryslug, 'id' => $reviewNews->id, 'slug' => Str::slug($reviewNews->title)]) }}
-                                @endif
-                                @endif" class="card-thumb">
+                        @if ($reviewNews->category->slug) @if (Route::has(strtolower($reviewNews->category->slug)))
+                                {{ return_post_link(post: $reviewNews) }} @endif
+                                @endif"
+                                    class="card-thumb">
                                     @php
-                                        $image = json_decode($reviewNews->image) ;
+                                        $image = json_decode($reviewNews->image);
                                     @endphp
-                                    <img loading="lazy" src="{{asset($image[0]??null)}}" alt="">
-                                    <span class="news-ctg-link">{{$reviewNews->category->name}}</span>
+                                    <img loading="lazy" src="{{ asset($image[0] ?? null) }}" alt="">
+                                    <span class="news-ctg-link">{{ $reviewNews->category->name }}</span>
                                 </a>
                                 <div class="card-body">
                                     <div class="card-meta">
-                                        <span>{{$reviewNews->updated_at->format('d M y')}}</span>
+                                        <span>{{ $reviewNews->updated_at->format('d M y') }}</span>
                                         @php
                                             $wordCount = str_word_count($reviewNews->description);
                                             $minutesToRead = round($wordCount / 200);
                                         @endphp
-                                        <span>{{ $minutesToRead }}{{__(' min to Read')}}</span>
+                                        <span>{{ $minutesToRead }}{{ __(' min to Read') }}</span>
                                     </div>
-                                    <a href="@if($reviewNews->category->slug)
-                                    @if(Route::has(strtolower($reviewNews->category->slug)))
-                                     {{ route('news.details', ['category_name' => $reviewNews->category->slug, 'id' => $reviewNews->id, 'slug' => Str::slug($reviewNews->title)]) }}
-                                    @endif
-                                    @endif" class="news-title">{{$reviewNews->title}} </a>
+                                    <a href="@if ($reviewNews->category->slug) @if (Route::has(strtolower($reviewNews->category->slug)))
+                                     {{ return_post_link(post: $reviewNews) }} @endif
+                                    @endif"
+                                        class="news-title">{{ $reviewNews->title }} </a>
                                 </div>
                             </div>
                         </div>
@@ -182,10 +172,11 @@
                     <div class="editor-area-wrapper">
                         <div class="news10-sec-title">
                             <h3>{{ $page_data['headings']['editor_picks'] ?? '' }}</h3>
-                            <a href="{{ route('photogallery') }}">{{ $page_data['headings']['show_all_btn_text'] ?? '' }} <i class="far fa-long-arrow-alt-right"></i></a>
+                            <a href="{{ route('photogallery') }}">{{ $page_data['headings']['show_all_btn_text'] ?? '' }}
+                                <i class="far fa-long-arrow-alt-right"></i></a>
                         </div>
                         <div class="news10-grid-five editor-area">
-                            @foreach($latestphotogalleries->take(5) as $latestphotogallery)
+                            @foreach ($latestphotogalleries->take(5) as $latestphotogallery)
                                 <div class="card news10-topnews-card maantop-news-card">
                                     <div class="new-card-thumb">
 
@@ -193,8 +184,10 @@
 
                                     </div>
                                     <div class="card-body">
-                                        <a href="{{ route('photogallery.details',['id'=>$latestphotogallery->id,'slug'=>\Illuminate\Support\Str::slug($latestphotogallery->title)]) }}" class="news-ctg-link">{{$latestphotogallery->title}}</a>
-                                        <a href="{{ route('photogallery.details',['id'=>$latestphotogallery->id,'slug'=>\Illuminate\Support\Str::slug($latestphotogallery->title)]) }}" class="news-title">{{$latestphotogallery->user_name}}</a>
+                                        <a href="{{ route('photogallery.details', ['id' => $latestphotogallery->id, 'slug' => Str::slug($latestphotogallery->title)]) }}"
+                                            class="news-ctg-link">{{ $latestphotogallery->title }}</a>
+                                        <a href="{{ route('photogallery.details', ['id' => $latestphotogallery->id, 'slug' => Str::slug($latestphotogallery->title)]) }}"
+                                            class="news-title">{{ $latestphotogallery->user_name }}</a>
                                     </div>
                                 </div>
                             @endforeach
@@ -209,33 +202,30 @@
                     <div class="feature-pst">
                         <ul>
                             <li>
-                                @foreach($features as $feature)
+                                @foreach ($features as $feature)
                                     <div class="feature-pst-items">
                                         <a href="
-                                        @if($feature->news_categoryslug)
-                                        @if(Route::has(strtolower($feature->news_categoryslug)))
-                                         {{ route('news.details', ['category_name' => $feature->news_categoryslug, 'id' => $feature->id, 'slug' => Str::slug($feature->title)]) }}
+                                        @if ($feature->news_categoryslug) @if (Route::has(strtolower($feature->news_categoryslug)))
+                                         {{ return_post_link($feature) }} @endif
                                         @endif
-                                        @endif
-                                            " class="thumb">
+                                            "
+                                            class="thumb">
                                             @php
 
-                                                $image = json_decode($feature->image) ;
+                                                $image = json_decode($feature->image);
 
                                             @endphp
-                                            <img loading="lazy" src="{{asset($image[0]??null)}}" alt="">
+                                            <img loading="lazy" src="{{ asset($image[0] ?? null) }}" alt="">
                                         </a>
                                         <div class="discription">
-                                            <a href="@if($feature->news_categoryslug)
-                                            @if(Route::has(strtolower($feature->news_categoryslug)))
-                                            {{ route( strtolower($feature->news_categoryslug),$feature->news_category) }}
-                                            @endif
-                                            @endif" class="news-ctg-link">{{$feature->news_category}}</a>
-                                            <a href="@if($feature->news_categoryslug)
-                                            @if(Route::has(strtolower($feature->news_categoryslug)))
-                                            {{ route('news.details', ['category_name' => $feature->news_categoryslug, 'id' => $feature->id, 'slug' => Str::slug($feature->title)]) }}
-                                            @endif
-                                            @endif" class="news-title">{{$feature->title}}</a>
+                                            <a href="@if ($feature->news_categoryslug) @if (Route::has(strtolower($feature->news_categoryslug)))
+                                            {{ route(strtolower($feature->news_categoryslug), $feature->news_category) }} @endif
+                                            @endif"
+                                                class="news-ctg-link">{{ $feature->news_category }}</a>
+                                            <a href="@if ($feature->news_categoryslug) @if (Route::has(strtolower($feature->news_categoryslug)))
+                                            {{ return_post_link($feature) }} @endif
+                                            @endif"
+                                                class="news-title">{{ $feature->title }}</a>
                                         </div>
                                     </div>
                                 @endforeach
@@ -248,7 +238,7 @@
                                 {!! $advertisement->sidebar_ads !!}
                             @else
                                 <a href="#" class="new-card-thumb">
-                                    <img loading="lazy" src="{{asset($image[0]??null)}}" alt="">
+                                    <img loading="lazy" src="{{ asset($image[0] ?? null) }}" alt="">
                                 </a>
                             @endif
                         </div>
@@ -262,32 +252,35 @@
     <!-- Featured video  start -->
     <section class="news10-feature-video-section">
         <div class="top-bg">
-            <img loading="lazy" src="{{asset('/maan/images/feature-video-bg.svg')}}" alt="">
+            <img loading="lazy" src="{{ asset('/maan/images/feature-video-bg.svg') }}" alt="">
         </div>
         <div class="container-xxl container-lg">
             <div class="news10-sec-title">
                 <h3>{{ $page_data['headings']['feature_video_title'] ?? '' }}</h3>
             </div>
             <div class="video-section-grid">
-                @foreach($latestVideoGalleries as $video)
-                    @if($loop->iteration==1)
-                <div class="card iframe-video-wrapper">
-                    <iframe src="{{asset($video->video)}}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                </div>
+                @foreach ($latestVideoGalleries as $video)
+                    @if ($loop->iteration == 1)
+                        <div class="card iframe-video-wrapper">
+                            <iframe src="{{ asset($video->video) }}" title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                        </div>
                     @endif
 
                     <div class="card trending-news-card weekly-review-card">
                         <div class="card-thumb">
-                            @if($video->image!=null)
-                                <img loading="lazy" src="{{asset($video->image)}}" alt="">
+                            @if ($video->image != null)
+                                <img loading="lazy" src="{{ asset($video->image) }}" alt="">
                             @else
-                            <img loading="lazy" src="{{asset('/maan/images/26.png')}}" alt="">
+                                <img loading="lazy" src="{{ asset('/maan/images/26.png') }}" alt="">
                             @endif
-                            <a href="" class="news-ctg-link">{{$video->title}}</a>
-                            <a class="venobox vbox-item" data-autoplay="true" data-vbtype="video" href="{{asset($video->video)}}"><i class="fas fa-play"></i></a>
+                            <a href="" class="news-ctg-link">{{ $video->title }}</a>
+                            <a class="venobox vbox-item" data-autoplay="true" data-vbtype="video"
+                                href="{{ asset($video->video) }}"><i class="fas fa-play"></i></a>
                         </div>
                         <div class="card-body">
-                            <a href="" class="news-title">{{$video->description}}</a>
+                            <a href="" class="news-title">{{ $video->description }}</a>
                         </div>
                     </div>
                 @endforeach
@@ -296,7 +289,7 @@
     </section>
     <!-- Featured video  end -->
     <!-- promotion  start -->
-    @if($advertisement)
+    @if ($advertisement)
         <section class="promotion-section p-0">
             <div class="container">
                 {!! $advertisement->after_post_ads !!}
@@ -311,47 +304,46 @@
                 @foreach ($newscategories as $newscategory)
                     <div class="layout-items">
                         <div class="news10-sec-title">
-                            <h3>{{ $newscategory->name}}</h3>
-                            <a href="@if(Route::has(strtolower($newscategory->slug))){{ route('categories.item', ['category_slug' => $newscategory->slug, 'category_name' => $newscategory->name]) }}@endif">{{__('Show All')}} <i class="far fa-long-arrow-alt-right"></i></a>
+                            <h3>{{ $newscategory->name }}</h3>
+                            <a
+                                href="@if (Route::has(strtolower($newscategory->slug))) {{ route('categories.item', ['category_slug' => $newscategory->slug, 'category_name' => $newscategory->name]) }} @endif">{{ __('Show All') }}
+                                <i class="far fa-long-arrow-alt-right"></i></a>
                         </div>
                         @foreach ($newscategory->news->take(4) as $wholenews)
-
                             @php
-                                $image = json_decode($wholenews->image) ;
+                                $image = json_decode($wholenews->image);
                             @endphp
-                            @if ($loop->iteration==1)
+                            @if ($loop->iteration == 1)
                                 <div class="card trending-news-card">
-                                    <a href="@if($newscategory->slug)
-                                        {{ route('news.details', ['category_name' => $newscategory->slug, 'id' => $wholenews->id, 'slug' => Str::slug($wholenews->title)]) }}
-                                        @endif" class="card-thumb">
-                                        <img loading="lazy" src="{{asset($image[0]??null)}}" alt="{{$image[0]??null}}">
+                                    <a href="@if ($newscategory->slug) {{ return_post_link($newscategory) }} @endif"
+                                        class="card-thumb">
+                                        <img loading="lazy" src="{{ asset($image[0] ?? null) }}"
+                                            alt="{{ $image[0] ?? null }}">
                                     </a>
                                     <div class="card-body">
-                                        <a href="@if($newscategory->slug)
-                                            {{ route('news.details', ['category_name' => $newscategory->slug, 'id' => $wholenews->id, 'slug' => Str::slug($wholenews->title)]) }}
-                                              @endif" class="news-title">{{$wholenews->title}}</a>
+                                        <a href="@if ($newscategory->slug) {{ return_post_link($newscategory) }} @endif"
+                                            class="news-title">{{ $wholenews->title }}</a>
                                     </div>
                                 </div>
                             @else
-
                                 <ul>
 
                                     <li>
                                         <div class="feature-pst-items">
-                                            <a href="@if($newscategory->slug)
-                                                {{ route('news.details', ['category_name' => $newscategory->slug, 'id' => $wholenews->id, 'slug' => Str::slug($wholenews->title)]) }}
-                                                @endif" class="thumb">
-                                                <img loading="lazy" src="{{asset($image[0]??null)}}" alt="{{$image[0]??null}}">
+                                            <a href="@if ($newscategory->slug) {{ return_post_link($newscategory) }} @endif"
+                                                class="thumb">
+                                                <img loading="lazy" src="{{ asset($image[0] ?? null) }}"
+                                                    alt="{{ $image[0] ?? null }}">
                                             </a>
                                             <div class="discription">
-                                                <a href="@if($newscategory->slug){{ route('news.details', ['category_name' => $newscategory->slug, 'id' => $wholenews->id, 'slug' => Str::slug($wholenews->title)]) }} @endif" class="news-title">{{$wholenews->title}}</a>
+                                                <a href="@if ($newscategory->slug) {{ return_post_link($newscategory) }} @endif"
+                                                    class="news-title">{{ $wholenews->title }}</a>
                                             </div>
                                         </div>
                                     </li>
 
                                 </ul>
                             @endif
-
                         @endforeach
 
                     </div>
@@ -360,7 +352,6 @@
             </div>
         </div>
     </section>
-
 @endsection
 @push('scripts')
     <!-- home2 -->

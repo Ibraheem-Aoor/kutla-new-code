@@ -29,7 +29,7 @@
                             @endphp
                             @if($images !='')
                                 @foreach($images as $image)
-                                    <a href="@if($popularnews->news_categoryslug){{ route('news.details', ['category_name' => $popularnews->news_categoryslug, 'id' => $popularnews->id]) }} @endif" class="post-thumb news10-hover-effect">
+                                    <a href="@if($popularnews->news_categoryslug){{ return_post_link($popularnews) }} @endif" class="post-thumb news10-hover-effect">
                                         <img src="{{ asset($image) }}" alt="">
                                     </a>
                                 @endforeach
@@ -37,13 +37,13 @@
                         @endif
                         <div class="single-post-content-wrapper">
                             <div class="news10-meta-info">
-                                <a href="@if($popularnews->news_categoryslug){{ route('news.details', ['category_name' => $popularnews->news_categoryslug, 'id' => $popularnews->id]) }} @endif" class="fashion-ctg">{{ $popularnews->tags }}</a>
+                                <a href="@if($popularnews->news_categoryslug){{ return_post_link($popularnews) }} @endif" class="fashion-ctg">{{ $popularnews->tags }}</a>
                                 <div class="post-author-date">
                                     <span class="author">{{__('by :')}} {{ $popularnews->reporter_name }} |</span>
                                     <span class="date">{{  (new \Illuminate\Support\Carbon($popularnews->date))->format('d M Y') }}</span>
                                 </div>
                             </div>
-                            <a href="@if($popularnews->news_categoryslug){{ route('news.details', ['category_name' => $popularnews->news_categoryslug, 'id' => $popularnews->id]) }} @endif" class="title">{{ $popularnews->title }}</a>
+                            <a href="@if($popularnews->news_categoryslug){{ return_post_link($popularnews) }} @endif" class="title">{{ $popularnews->title }}</a>
                         </div>
                     </div>
                     @endforeach

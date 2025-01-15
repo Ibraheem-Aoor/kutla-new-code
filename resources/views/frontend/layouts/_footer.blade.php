@@ -33,7 +33,7 @@
                                             @if($images !='')
                                                 @foreach($images as $image)
                                                     <a href="@if($popularnews->news_categoryslug)
-                                                        {{ route('news.details', ['category_name' => $popularnews->news_categoryslug, 'id' => $popularnews->id]) }}
+                                                        {{ return_post_link($popularnews) }}
                                                         @endif">
                                                     <img src="{{ asset($image) }}" alt="list-news-img">
                                                     </a>
@@ -45,7 +45,7 @@
                                     <div class="maan-list-text">
                                         <h4>
                                             <a href="@if($popularnews->news_categoryslug)
-                                            {{ route('news.details', ['category_name' => $popularnews->news_categoryslug, 'id' => $popularnews->id]) }}
+                                            {{ return_post_link($popularnews) }}
                                             @endif">{{ $popularnews->title }}</a>
                                         </h4>
                                         <ul>

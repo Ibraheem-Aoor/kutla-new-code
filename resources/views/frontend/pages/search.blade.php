@@ -34,7 +34,7 @@
                                         @if($images!='')
                                             @foreach ($images as $image)
                                                 @if (File::exists($image))
-                                                    <a href="{{ route('news.details', ['category_name' => $search->news_categoryslug, 'id' => $search->id]) }}"><img src="{{ asset($image) }}" alt="top-news"></a>
+                                                    <a href="{{  return_post_link($search) }}"><img src="{{ asset($image) }}" alt="top-news"></a>
                                                 @endif
                                             @endforeach
                                         @endif
@@ -56,7 +56,7 @@
                                             </li>
                                         </ul>
 
-                                        <h4><a href="{{ route('news.details', ['category_name' => $search->news_categoryslug, 'id' => $search->id]) }}">{{ $search->title }}</a></h4>
+                                        <h4><a href="{{  return_post_link($search) }}">{{ $search->title }}</a></h4>
                                         <p>{{ $search->summary }}</p>
                                     </div>
                                 </div>
@@ -107,7 +107,7 @@
                                     </div>
                                     <div class="card-body maan-card-body">
                                         <div class="maan-text">
-                                            <h4><a href="{{ route('news.details', ['category_name' => $popularnews->news_categoryslug, 'id' => $popularnews->id]) }}">{{ $popularnews->title }}</a></h4>
+                                            <h4><a href="{{ return_post_link($popularnews) }}">{{ $popularnews->title }}</a></h4>
                                             <ul>
                                                 <li>
                                                     <span class="maan-icon"><svg viewBox="0 0 512 512"><path d="M347.216,301.211l-71.387-53.54V138.609c0-10.966-8.864-19.83-19.83-19.83c-10.966,0-19.83,8.864-19.83,19.83v118.978 c0,6.246,2.935,12.136,7.932,15.864l79.318,59.489c3.569,2.677,7.734,3.966,11.878,3.966c6.048,0,11.997-2.717,15.884-7.952 C357.766,320.208,355.981,307.775,347.216,301.211z"></path><path d="M256,0C114.833,0,0,114.833,0,256s114.833,256,256,256s256-114.833,256-256S397.167,0,256,0z M256,472.341 c-119.275,0-216.341-97.066-216.341-216.341S136.725,39.659,256,39.659c119.295,0,216.341,97.066,216.341,216.341 S375.275,472.341,256,472.341z"></path></svg></span>
@@ -167,7 +167,7 @@
 
                                         </div>
                                         <div class="maan-list-text">
-                                            <h4><a href="{{ route('news.details', ['category_name' => $latestnews->news_categoryslug, 'id' => $latestnews->id]) }}">{{ $latestnews->title }}</a></h4>
+                                            <h4><a href="{{ return_post_link($latestnews) }}">{{ $latestnews->title }}</a></h4>
                                             <ul>
                                                 <li>
                                                     <span class="maan-icon"><svg viewBox="0 0 512 512"><path d="M347.216,301.211l-71.387-53.54V138.609c0-10.966-8.864-19.83-19.83-19.83c-10.966,0-19.83,8.864-19.83,19.83v118.978 c0,6.246,2.935,12.136,7.932,15.864l79.318,59.489c3.569,2.677,7.734,3.966,11.878,3.966c6.048,0,11.997-2.717,15.884-7.952 C357.766,320.208,355.981,307.775,347.216,301.211z"></path><path d="M256,0C114.833,0,0,114.833,0,256s114.833,256,256,256s256-114.833,256-256S397.167,0,256,0z M256,472.341 c-119.275,0-216.341-97.066-216.341-216.341S136.725,39.659,256,39.659c119.295,0,216.341,97.066,216.341,216.341 S375.275,472.341,256,472.341z"></path></svg></span>

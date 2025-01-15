@@ -35,6 +35,7 @@ class TransferDataService
                         $image = json_encode([$this->db->table('files_library')->find($post->photo_id)?->file_name]);
 
                         News::create([
+                            'id' => $post->id,
                             'title' => $post->title,
                             'summary' => $post->summary ?? $post->title,
                             'description' => $post->details,
