@@ -12,14 +12,14 @@
 
                     <div class="mt-2">
                         <label>{{ __('Title') }}</label>
-                        <input type="text" class="form-control" name="title" placeholder="{{ __('Enter Name') }}" required>
+                        <input type="text" class="form-control" name="title" placeholder="{{ __('Enter Name') }}"
+                            required>
                     </div>
 
                     <div class="mt-2">
                         <label>{{ __('Publish / Unpublish') }}</label>
                         <div class="gpt-up-down-arrow position-relative">
-                            <select name="status" required=""
-                                class="form-control select-dropdown">
+                            <select name="status" required="" class="form-control select-dropdown">
                                 <option value="">{{ __('Select a status') }}</option>
                                 <option value="1">{{ __('Active') }}</option>
                                 <option value="0">{{ __('Deactive') }}</option>
@@ -32,10 +32,21 @@
                         <div class="row">
                             <div class="col-10">
                                 <label class="img-label">{{ __('Image') }}</label>
-                                <input type="file" accept="image/*" name="image[]" class="form-control file-input-change" data-id="image">
+                                <input type="file" accept="image/*" name="image[]"
+                                    class="form-control file-input-change" data-id="image">
                             </div>
                             <div class="col-2 align-self-center mt-3">
-                                <img src="{{ asset('assets/images/icons/upload.png') }}" id="image" class="table-img">
+                                <img src="{{ asset('assets/images/icons/upload.png') }}" id="image"
+                                    class="table-img">
+                            </div>
+                        </div>
+                    </div>
+                    {{-- Update your file input in create.blade.php --}}
+                    <div class="mt-2">
+                        <div class="row">
+                            <div class="col-12">
+                                <label class="img-label">{{ __('Gallery') }}</label>
+                                <input type="file" class="filepond" name="gallery[]" accept="image/*" multiple>
                             </div>
                         </div>
                     </div>

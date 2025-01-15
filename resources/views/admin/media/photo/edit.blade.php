@@ -6,13 +6,14 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="post" action="" class="ajaxform_instant_reload" enctype="multipart/form-data" id="updatePhotoForm">
+                <form method="post" action="" class="ajaxform_instant_reload" enctype="multipart/form-data"
+                    id="updatePhotoForm">
                     @csrf
                     @method('put')
-                    
                     <div class="mt-2">
                         <label>{{ __('Title') }}</label>
-                        <input type="text" class="form-control" name="title" id="title" placeholder="{{ __('Enter Name') }}" required>
+                        <input type="text" class="form-control" name="title" id="title"
+                            placeholder="{{ __('Enter Name') }}" required>
                     </div>
 
                     <div class="mt-2">
@@ -30,11 +31,22 @@
                     <div class="row">
                         <div class="col-lg-8">
                             <label>{{ __('Image') }}</label>
-                            <input type="file" name="image[]" accept="image/*" onchange="document.getElementById('photoImage').src = window.URL.createObjectURL(this.files[0])" class="form-control">
+                            <input type="file" name="image[]" accept="image/*"
+                                onchange="document.getElementById('photoImage').src = window.URL.createObjectURL(this.files[0])"
+                                class="form-control">
                         </div>
 
                         <div class="col-lg-4 align-self-center mt-3">
                             <img class="table-img" id="photoImage" src="">
+                        </div>
+                    </div>
+                    {{-- Update your file input in create.blade.php --}}
+                    <div class="mt-2">
+                        <div class="row">
+                            <div class="col-12">
+                                <label class="img-label">{{ __('Gallery') }}</label>
+                                <input type="file" class="filepond" name="gallery[]" accept="image/*" multiple>
+                            </div>
                         </div>
                     </div>
 

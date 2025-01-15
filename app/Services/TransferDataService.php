@@ -99,6 +99,45 @@ class TransferDataService
         }
     }
 
+    public function transferAlboms()
+    {
+        DB::beginTransaction();
+
+        try {
+            DB::table('photogalleries')->delete(); // Avoid truncate for transaction safety
+
+            $this->db->table('videos')
+                ->whereNull('deleted_at')
+                ->chunkById(50, function ($kutla_videos) {
+                    foreach ($kutla_videos as $kutla_video) {
+                        if (!$kutla_video->file_name && !$kutla_video->youtube_link) {
+                            continue;
+                        }
+
+                        $image = $this->db->table('files_library')->find($kutla_video->photo_id)?->file_name;
+
+                        Videogallery::create([
+                            'title' => $kutla_video->name,
+                            'description' => $kutla_video->description ?? $kutla_video->name,
+                            'video' => $kutla_video->youtube_link ?? $kutla_video->file_name,
+                            'video_source' => $kutla_video->youtube_link ? 'Youtube' : 'Dailymotion',
+                            'video_option' => $kutla_video->youtube_link ? 'Share Link' : 'Upload Video',
+                            'image' => $image,
+                            'status' => 1,
+                            'user_id' => 1,
+                        ]);
+                    }
+                });
+
+            DB::commit();
+            return true;
+        } catch (\Throwable $e) {
+            DB::rollBack();
+            Log::error('Error transferring videos: ' . $e->getMessage());
+            throw $e;
+        }
+    }
+
     public function getSubCategory($post)
     {
         return $post->main_news ? 1 : ($post->report ? 2 : ($post->chosen ? 3 : 1));

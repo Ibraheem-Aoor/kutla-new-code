@@ -36,7 +36,12 @@
                         data-title="{{ $photogallery->title }}"
                         data-status="{{ $photogallery->status }}"
                         data-description="{{ $photogallery->description }}"
-                        data-image="{{ asset($photogallery->image) ?? '' }}">
+                        data-image="{{ asset($photogallery->image) ?? '' }}"
+                        data-gallery="{{ json_encode($photogallery->galleryImages->map(fn($img) => [
+                            'source' => $img->id,
+                            'options' => ['type' => 'local'  , 'source' =>  asset($img->image)],
+                        ])) }}"
+                        data-id="{{ $photogallery->id }}">
                         <i class="fal fa-pencil-alt"></i>
                         {{ __('Edit') }}
                     </a>

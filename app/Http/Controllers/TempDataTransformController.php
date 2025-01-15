@@ -65,6 +65,7 @@ class TempDataTransformController extends Controller
     public function transferAlboms()
     {
         $albom = DB::connection('kutla_original')->table('albums')->first();
+        dd($albom);
         $kutla_alboms = DB::connection('kutla_original')->table('files_library')->where('album_id', $albom->id)->get();
         dd($kutla_alboms);
 

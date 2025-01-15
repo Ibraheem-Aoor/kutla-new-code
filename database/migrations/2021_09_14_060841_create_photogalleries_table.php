@@ -17,7 +17,7 @@ class CreatePhotogalleriesTable extends Migration
             $table->id()->autoIncrement();
             $table->string('title');
             $table->string('description');
-            $table->string('image');
+            $table->string('image')->comment('Cover Image "main image" ');
             $table->integer('status')->default(0);
             $table->integer('viewers')->default(0);
             $table->unsignedBigInteger('user_id');
