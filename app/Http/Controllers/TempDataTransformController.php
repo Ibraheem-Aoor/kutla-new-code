@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\News;
 use App\Models\Videogallery;
+use App\Services\TransferDataService;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -64,11 +65,7 @@ class TempDataTransformController extends Controller
 
     public function transferAlboms()
     {
-        $albom = DB::connection('kutla_original')->table('albums')->first();
-        dd($albom);
-        $kutla_alboms = DB::connection('kutla_original')->table('files_library')->where('album_id', $albom->id)->get();
-        dd($kutla_alboms);
-
+       (new TransferDataService())->transferAlboms();
     }
 
 

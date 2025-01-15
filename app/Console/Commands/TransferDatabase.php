@@ -43,6 +43,9 @@ class TransferDatabase extends Command
             if ($this->transfer_data_service->transferVideos()) {
                 $this->info('Videos Transferred Successfully');
             }
+            if ($this->transfer_data_service->transferAlboms()) {
+                $this->info('Alboms Transferred Successfully');
+            }
         } catch (\Throwable $e) {
             $this->error('Error: ' . $e->getMessage());
         }

@@ -766,5 +766,11 @@
     "installer_messages.updater.final.finished": "Application's database has been successfully updated.",
     "installer_messages.updater.final.exit": "Click here to exit",
     "installer_messages.updater.log.success_message": "Laravel Installer successfully UPDATED on ",
-    "home" : "الرئيسية"
+    "home" : "الرئيسية",
+    "Welcome to" : "أهلا بك في ",
+    "welcome_back": "اهلا بعودتك الرجاء تسجيل الدخول",
+    "Forgot Password": "نسيت كلمة المرور؟",
+    "Enter the email address associated with your account" : "الرجاء ادخال البريد الالكتروني لاستعادة كلمة المرور",
+    "Change Password" : "تغيير كلمة المرور",
+    "Create new password, it must be Strong password." : "ادخل كلمة المرور ,  يجب ان تكون قوية"
 }

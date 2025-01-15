@@ -58,13 +58,13 @@ Route::middleware(['throttle:web-user'])->group(function () {
     Route::post('/contactus', [\App\Http\Controllers\Frontend\ContactusController::class, 'maanNewsContactusStore'])->name('contactus.store');
 
     //route signup
-    Route::get('/signup', [SignupController::class, 'maanSignupIndex'])->name('signup');
-    Route::post('/signup', [SignupController::class, 'maanSignupStore']);
+    // Route::get('/signup', [SignupController::class, 'maanSignupIndex'])->name('signup');
+    // Route::post('/signup', [SignupController::class, 'maanSignupStore']);
 
-    //route signin
-    Route::get('/signin', [SigninController::class, 'maanSigninIndex'])->name('signin');
-    Route::post('/signin', [SigninController::class, 'maanSigninLogin']);
-    Route::get('/signout', [SigninController::class, 'maanSignout'])->name('signout');
+    // //route signin
+    // Route::get('/signin', [SigninController::class, 'maanSigninIndex'])->name('signin');
+    // Route::post('/signin', [SigninController::class, 'maanSigninLogin']);
+    // Route::get('/signout', [SigninController::class, 'maanSignout'])->name('signout');
 
 });
 // Route admin all

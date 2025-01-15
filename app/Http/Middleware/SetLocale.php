@@ -31,7 +31,7 @@ class SetLocale
             if ($request->has('lang')) {
                 session(['lang' => $request->lang]);
             }
-            $lang =  session('lang') ?? 'en';
+            $lang =  session('lang') ?? 'ar';
         }
 
         app()->setLocale($lang);

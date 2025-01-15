@@ -2,7 +2,9 @@
 
 namespace App\Services;
 
+use App\Models\GalleryImage;
 use App\Models\News;
+use App\Models\Photogallery;
 use App\Models\Videogallery;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
@@ -102,33 +104,38 @@ class TransferDataService
     public function transferAlboms()
     {
         DB::beginTransaction();
-
         try {
-            DB::table('photogalleries')->delete(); // Avoid truncate for transaction safety
-
-            $this->db->table('videos')
-                ->whereNull('deleted_at')
-                ->chunkById(50, function ($kutla_videos) {
-                    foreach ($kutla_videos as $kutla_video) {
-                        if (!$kutla_video->file_name && !$kutla_video->youtube_link) {
+            $this->db->table('albums')->whereNull('deleted_at')
+                ->chunkById(50 , function ($kutla_alboms) {
+                    foreach ($kutla_alboms as $albom) {
+                        $cover_image = $this->db->table('files_library')->where('album_id', $albom->id)->where('album_cover'  ,1)->first()?->file_name;
+                        if(!isset($cover_image))
+                        {
+                            $cover_image = $this->db->table('files_library')->where('album_id', $albom->id)->first()?->file_name;
+                        }
+                        if(is_null($cover_image))
+                        {
                             continue;
                         }
-
-                        $image = $this->db->table('files_library')->find($kutla_video->photo_id)?->file_name;
-
-                        Videogallery::create([
-                            'title' => $kutla_video->name,
-                            'description' => $kutla_video->description ?? $kutla_video->name,
-                            'video' => $kutla_video->youtube_link ?? $kutla_video->file_name,
-                            'video_source' => $kutla_video->youtube_link ? 'Youtube' : 'Dailymotion',
-                            'video_option' => $kutla_video->youtube_link ? 'Share Link' : 'Upload Video',
-                            'image' => $image,
-                            'status' => 1,
+                        $photo_gallery = Photogallery::query()->create([
+                            'title' => $albom->name,
+                            'description' => $albom->details ?? $albom->name,
+                            'created_at' => $albom->created_at,
+                            'updated_at' => $albom->updated_at,
+                            'status' =>  $albom->active,
+                            'viewers' => $albom->read_no,
+                            'image' => $cover_image,
                             'user_id' => 1,
                         ]);
+                        $albom_photos = $this->db->table('files_library')->where('album_id', $albom->id)->where('type' , 'photo')->pluck('file_name');
+                        foreach ($albom_photos as $albom_photo) {
+                            GalleryImage::query()->create([
+                                'photogallery_id' => $photo_gallery->id,
+                                'image' => $albom_photo,
+                            ]);
+                        }
                     }
                 });
-
             DB::commit();
             return true;
         } catch (\Throwable $e) {
