@@ -987,7 +987,7 @@
                     @if ($loop->iteration == 1)
                         <div class="card iframe-video-wrapper">
                             <iframe src="{{ asset($video->video) }}" title="YouTube video player" frameborder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                 allowfullscreen></iframe>
                         </div>
                     @endif
