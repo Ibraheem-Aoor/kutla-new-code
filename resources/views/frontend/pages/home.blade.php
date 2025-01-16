@@ -105,15 +105,14 @@
                     <div class="col-sm-6 col-lg-4 col-xl-3">
                         <div class="card maan-card-img">
                             <a class="topcategories-thumb"
-                                href="  @if (Route::has(strtolower($newscategory->slug))) {{ route('categories.item', [ 'category_name' => $newscategory->name]) }} @endif">
+                                href=" {{ route('categories.item', ['category_name' => $newscategory->name]) }} ">
 
                                 <img loading="lazy" src="{{ asset($newscategory->image) }}"
                                     alt="{{ $newscategory->name }}">
 
                             </a>
                             <div class="card-body maan-card-body">
-                                <a
-                                    href="  @if (Route::has(strtolower($newscategory->slug))) {{ route('categories.item', [ 'category_name' => $newscategory->name]) }} @endif">
+                                <a href=" {{ route('categories.item', ['category_name' => $newscategory->name]) }} ">
 
                                     <span>{{ $newscategory->name }}</span>
                                     <span>{{ $newscategory->post_counter }} {{ __('Post') }}</span>
@@ -1096,16 +1095,14 @@
                 @foreach ($latestphotogalleries as $latestphotogallery)
                     <div class="col-lg-2">
                         <div class="card maan-card-img">
-                            <a
-                                href="{{ route('photogallery.details', ['id' => $latestphotogallery->id]) }}">
+                            <a href="{{ route('photogallery.details', ['id' => $latestphotogallery->id]) }}">
                                 <img loading="lazy" src="{{ asset($latestphotogallery->image) }}" alt="top-news">
                             </a>
 
                             <div class="card-body maan-card-body">
                                 <span class="maan-tag-red d-none">{{ __('Fashion') }}</span>
                                 <div class="maan-text">
-                                    <h4><a
-                                            href="{{ route('photogallery.details', ['id' => $latestphotogallery->id]) }}">{{ $latestphotogallery->title }}
+                                    <h4><a href="{{ route('photogallery.details', ['id' => $latestphotogallery->id]) }}">{{ $latestphotogallery->title }}
                                             <br> {{ __('132.2m') }}</a></h4>
                                     <ul>
                                         <li>
