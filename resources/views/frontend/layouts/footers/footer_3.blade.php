@@ -62,7 +62,7 @@
                     <div class="news10-news-link">
                         <ul>
                             @foreach(newscategories() as $newscategory)
-                                <li><a href="{{ route('categories.item', ['category_slug' => $newscategory->slug, 'category_name' => $newscategory->name]) }}">{{ $newscategory->name }}</a></li>
+                                <li><a href="{{ route('categories.item', [ 'category_name' => $newscategory->name]) }}">{{ $newscategory->name }}</a></li>
                             @endforeach
                         </ul>
                     </div>
@@ -89,7 +89,7 @@
                     <div class="news10-news-tags">
                         <ul>
                             @foreach(newscategories() as $newscategory)
-                                <li><a href="{{ route('categories.item', ['category_slug' => $newscategory->slug, 'category_name' => $newscategory->name]) }}">{{ $newscategory->name }}</a></li>
+                                <li><a href="{{ route('categories.item', [ 'category_name' => $newscategory->name]) }}">{{ $newscategory->name }}</a></li>
                             @endforeach
                         </ul>
                     </div>

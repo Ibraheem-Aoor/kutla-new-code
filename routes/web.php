@@ -39,7 +39,7 @@ use App\Http\Controllers\TempDataTransformController;
 
 Route::middleware(['throttle:web-user'])->group(function () {
     Route::get('/', [HomeController::class, 'maanIndex'])->name('home');
-    Route::get('/home-one', [HomeController::class, 'maanIndex'])->name('home-one');
+    Route::get('/allNews', [HomeController::class, 'maanIndex'])->name('home-one');
     Route::get('/home-two', [HomeController::class, 'maanIndex'])->name('home-two');
     Route::get('/subscribe/ajax', [HomeController::class, 'subscribeAjax'])->name('subscribe');
     //route search
@@ -48,7 +48,7 @@ Route::middleware(['throttle:web-user'])->group(function () {
     Route::get('/photogallery', [\App\Http\Controllers\Frontend\PhotogalleryController::class, 'maanPhotogalleryIndex'])->name('photogallery');
     Route::get('/photogallery/details/{id}/{slug?}', [\App\Http\Controllers\Frontend\PhotogalleryController::class, 'maanPhotogalleryDetails'])->name('photogallery.details');
 
-    Route::get('categories/{category_slug}/{category_name}', [\App\Http\Controllers\Frontend\NewsController::class, 'maanNews'])->name('categories.item');
+    Route::get('categories/{category_name}', [\App\Http\Controllers\Frontend\NewsController::class, 'maanNews'])->name('categories.item');
     Route::get('/post/{post}/{slug}', [\App\Http\Controllers\Frontend\NewsController::class, 'maanNewsDetails'])->name('news.details');
 
     // route news comments

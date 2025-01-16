@@ -324,7 +324,7 @@
                             <ul>
                                 @foreach (newscategories() as $newscategory)
                                     <li><a
-                                            href="{{ route('categories.item', ['category_slug' => $newscategory->slug, 'category_name' => $newscategory->name]) }}">{{ $newscategory->name }}</a>
+                                            href="{{ route('categories.item', [ 'category_name' => $newscategory->name]) }}">{{ $newscategory->name }}</a>
                                     </li>
                                 @endforeach
                             </ul>

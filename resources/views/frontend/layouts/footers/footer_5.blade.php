@@ -77,7 +77,7 @@
                         <div class="news10-news-tags">
                             <ul>
                                 @foreach($menus as $newscategory)
-                                    <li><a href="{{ route('categories.item', ['category_slug' => $newscategory->slug, 'category_name' => $newscategory->name]) }}
+                                    <li><a href="{{ route('categories.item', [ 'category_name' => $newscategory->name]) }}
                                         ">{{ $newscategory->name }}</a></li>
                                 @endforeach
                             </ul>

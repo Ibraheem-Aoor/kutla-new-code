@@ -35,7 +35,7 @@
                                     @endif
                                     @if($newscategory->menu_publish && $key<5)
                                         <li>
-                                            <a href="{{ route('categories.item', ['category_slug' => $newscategory->slug, 'category_name' => $newscategory->name]) }}">{{ $newscategory->name }}</a>
+                                            <a href="{{ route('categories.item', [ 'category_name' => $newscategory->name]) }}">{{ $newscategory->name }}</a>
                                         </li>
                                     @endif
                                 @endforeach
@@ -46,7 +46,7 @@
                                 @foreach( (newscategories()) as $key=>$newscategory )
                                     @if($newscategory->menu_publish && $key>4)
                                         <li>
-                                            <a href="{{ route('categories.item', ['category_slug' => $newscategory->slug, 'category_name' => $newscategory->name]) }}">{{ $newscategory->name }}</a>
+                                            <a href="{{ route('categories.item', [ 'category_name' => $newscategory->name]) }}">{{ $newscategory->name }}</a>
                                         </li>
                                     @endif
                                 @endforeach

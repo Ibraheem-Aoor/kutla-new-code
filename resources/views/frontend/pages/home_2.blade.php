@@ -116,7 +116,7 @@
                 </h3>
                 <a
                     href="@if (!empty($latestReviewNews) && isset($latestReviewNews[0]) && $latestReviewNews[0]->category) @if (Route::has(strtolower($latestReviewNews[0]->category->slug)))
-                        {{ route('categories.item', ['category_slug' => $latestReviewNews[0]->category->slug, 'category_name' => $latestReviewNews[0]->category->name]) }} @endif
+                        {{ route('categories.item', [ 'category_name' => $latestReviewNews[0]->category->name]) }} @endif
                 @endif
             ">
                     {{ __('Show All') }} <i class="far fa-long-arrow-alt-right"></i>
@@ -306,7 +306,7 @@
                         <div class="news10-sec-title">
                             <h3>{{ $newscategory->name }}</h3>
                             <a
-                                href="@if (Route::has(strtolower($newscategory->slug))) {{ route('categories.item', ['category_slug' => $newscategory->slug, 'category_name' => $newscategory->name]) }} @endif">{{ __('Show All') }}
+                                href="@if (Route::has(strtolower($newscategory->slug))) {{ route('categories.item', [ 'category_name' => $newscategory->name]) }} @endif">{{ __('Show All') }}
                                 <i class="far fa-long-arrow-alt-right"></i></a>
                         </div>
                         @foreach ($newscategory->news->take(4) as $wholenews)

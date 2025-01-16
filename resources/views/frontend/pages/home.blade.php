@@ -105,7 +105,7 @@
                     <div class="col-sm-6 col-lg-4 col-xl-3">
                         <div class="card maan-card-img">
                             <a class="topcategories-thumb"
-                                href="  @if (Route::has(strtolower($newscategory->slug))) {{ route('categories.item', ['category_slug' => $newscategory->slug, 'category_name' => $newscategory->name]) }} @endif">
+                                href="  @if (Route::has(strtolower($newscategory->slug))) {{ route('categories.item', [ 'category_name' => $newscategory->name]) }} @endif">
 
                                 <img loading="lazy" src="{{ asset($newscategory->image) }}"
                                     alt="{{ $newscategory->name }}">
@@ -113,7 +113,7 @@
                             </a>
                             <div class="card-body maan-card-body">
                                 <a
-                                    href="  @if (Route::has(strtolower($newscategory->slug))) {{ route('categories.item', ['category_slug' => $newscategory->slug, 'category_name' => $newscategory->name]) }} @endif">
+                                    href="  @if (Route::has(strtolower($newscategory->slug))) {{ route('categories.item', [ 'category_name' => $newscategory->name]) }} @endif">
 
                                     <span>{{ $newscategory->name }}</span>
                                     <span>{{ $newscategory->post_counter }} {{ __('Post') }}</span>

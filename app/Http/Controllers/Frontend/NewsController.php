@@ -28,7 +28,7 @@ class NewsController extends Controller
         return redirect()->back();
     }
 
-    public function maanNews($category_slug, $category_name)
+    public function maanNews($category_name)
     {
         $newscategorysingle = Newscategory::where('name', ucfirst($category_name))->where('menu_publish' , 1)->firstOrFail();
 

@@ -5,7 +5,7 @@
             <ul class="dropdown-menu">
                 @endif
                 <li>
-                    <a href="{{ route('categories.item', ['category_slug' => $menu->slug, 'category_name' => $menu->name]) }}">{{ $menu->name }} </a>
+                    <a href="{{ route('categories.item', [ 'category_name' => $menu->name]) }}">{{ $menu->name }} </a>
                 </li>
                 @if ($loop->last)
             </ul>

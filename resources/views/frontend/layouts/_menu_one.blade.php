@@ -7,7 +7,7 @@
                 </a>
             @else
                 <a
-                    href="{{ route('categories.item', ['category_slug' => $menu->slug, 'category_name' => $menu->name]) }}">{{ $menu->name }}
+                    href="{{ route('categories.item', ['category_name' => $menu->name]) }}">{{ $menu->name }}
                 </a>
             @endif
         </li>

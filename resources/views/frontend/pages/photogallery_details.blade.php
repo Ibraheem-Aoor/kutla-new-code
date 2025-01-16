@@ -140,7 +140,7 @@
                                     @foreach (newscategories() as $newscategory)
                                         <li><a
                                                 href="
-                                    @if (Route::has(strtolower($newscategory->slug))) {{ route('categories.item', ['category_slug' => $newscategory->slug, 'category_name' => $newscategory->name]) }} @endif
+                                    @if (Route::has(strtolower($newscategory->slug))) {{ route('categories.item', [ 'category_name' => $newscategory->name]) }} @endif
                                             ">
                                                 {{ $newscategory->name }}
                                             </a></li>
@@ -179,7 +179,7 @@
                                 <ul>
                                     @foreach (newscategories() as $newscategory)
                                         <li><a
-                                                href="@if (Route::has(strtolower($newscategory->slug))) {{ route('categories.item', ['category_slug' => $newscategory->slug, 'category_name' => $newscategory->name]) }} @endif">{{ $newscategory->name }}
+                                                href="@if (Route::has(strtolower($newscategory->slug))) {{ route('categories.item', [ 'category_name' => $newscategory->name]) }} @endif">{{ $newscategory->name }}
                                             </a></li>
                                     @endforeach
 

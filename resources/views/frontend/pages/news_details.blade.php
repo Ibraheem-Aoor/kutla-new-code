@@ -210,7 +210,7 @@
                                         $newscategories = newscategories();
                                     @endphp
                                     @foreach($newscategories as $newscategory)
-                                        <li><a href="@if(Route::has(strtolower($newscategory->slug))){{ route('categories.item', ['category_slug' => $newscategory->slug, 'category_name' => $newscategory->name]) }}@endif">{{ $newscategory->name }}</a></li>
+                                        <li><a href="@if(Route::has(strtolower($newscategory->slug))){{ route('categories.item', [ 'category_name' => $newscategory->name]) }}@endif">{{ $newscategory->name }}</a></li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -261,7 +261,7 @@
                             <div class="widgets-tags">
                                 <ul>
                                     @foreach($newscategories as $newscategory)
-                                        <li><a href="{{ route('categories.item', ['category_slug' => $newscategory->slug, 'category_name' => $newscategory->name]) }}">{{ $newscategory->name }}</a></li>
+                                        <li><a href="{{ route('categories.item', [ 'category_name' => $newscategory->name]) }}">{{ $newscategory->name }}</a></li>
                                     @endforeach
                                 </ul>
                             </div>
