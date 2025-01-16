@@ -331,12 +331,12 @@
                         </a>
                     </li>
                     @endcan
-                    <li>
+                    {{-- <li>
                         <a href="{{ route('admin.theme.index') }}"
                             class="{{ Request::routeIs('admin.theme.index') ? 'active' : '' }}">
                            {{ __('Theme Settings') }}
                         </a>
-                    </li>
+                    </li> --}}
                     <li class="new-added">
                         <span class="badge badge-warning navbar-badge pulse-animation">{{ __('New') }}</span>
                         <a href="{{ route('admin.theme.color') }}"

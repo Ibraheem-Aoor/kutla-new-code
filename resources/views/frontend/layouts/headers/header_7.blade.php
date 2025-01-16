@@ -8,8 +8,10 @@
                     <div class="news10-news-slide news-tech-breaking">
                         <div class="news10-slide-title">
                             <div class="newss10-slide-arrow">
-                                <div class="newss10-prev-btn" id="breakingnews-prev"><i class="fal fa-chevron-left"></i></div>
-                                <div class="newss10-next-btn" id="breakingnews-next"><i class=" fal fa-chevron-right"></i></div>
+                                <div class="newss10-prev-btn" id="breakingnews-prev"><i class="fal fa-chevron-left"></i>
+                                </div>
+                                <div class="newss10-next-btn" id="breakingnews-next"><i
+                                        class=" fal fa-chevron-right"></i></div>
                             </div>
                             <h6>Breaking News : </h6>
                         </div>
@@ -23,8 +25,8 @@
                 <div class="col-lg-3 col-xl-3">
                     <div class="news10-social-link">
                         <ul>
-                            @foreach($socials as $social)
-                                <li><a href="{{$social->url}}"><i class="{{$social->icon_code}}"></i></a></li>
+                            @foreach ($socials as $social)
+                                <li><a href="{{ $social->url }}"><i class="{{ $social->icon_code }}"></i></a></li>
                             @endforeach
                         </ul>
                     </div>
@@ -41,7 +43,8 @@
         <div class="row align-items-center">
             <div class="col-7 col-lg-2 order-7 order-lg-1">
                 <div class="logo">
-                    <a href="{{ URL('/') }}"><img src="{{ asset($settings->logo) }}" alt="{{ asset($settings->logo) }}"></a>
+                    <a href="{{ URL('/') }}"><img src="{{ asset($settings->logo) }}"
+                            alt="{{ asset($settings->logo) }}"></a>
                 </div>
             </div>
             <div class="col-lg-8 order-4 order-lg-2">
@@ -51,18 +54,13 @@
                         <span></span>
                     </button>
                     <ul>
-                        <li class="dropdown"><a href="{{route('home')}}">{{ $homeContactus[0]['type'] }}</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="{{route('home-one')}}">{{__('Home One')}}</a></li>
-                                <li><a href="{{route('home-two')}}">{{__('Home Two')}}</a></li>
-
-                            </ul>
-                        </li>
-                        </li>
-                        {{--start menu dynamic--}}
+                        <li>
+                            <a href="{{ route('home') }}">{{ __('Home One') }}</a>
+                        </li> &nbsp;&nbsp;&nbsp;
+                        {{-- start menu dynamic --}}
                         @include('frontend.layouts._menu_two')
-                        {{--end menu dynamic--}}
-                        <li ><a href="{{ route('contactus') }}">{{ $homeContactus[1]['type'] }}</a></li>
+                        {{-- end menu dynamic --}}
+                        <li><a href="{{ route('contactus') }}">{{ @$homeContactus[0]['name'] }}</a></li>
                     </ul>
                 </nav>
             </div>
@@ -70,12 +68,26 @@
                 <ul class="news10-right-btns">
                     <li>
                         <button class="news10-search-btn">
-                            <span class="icon"><svg viewBox="0 0 511.999 511.999"><path d="M508.874,478.708L360.142,329.976c28.21-34.827,45.191-79.103,45.191-127.309c0-111.75-90.917-202.667-202.667-202.667 S0,90.917,0,202.667s90.917,202.667,202.667,202.667c48.206,0,92.482-16.982,127.309-45.191l148.732,148.732 c4.167,4.165,10.919,4.165,15.086,0l15.081-15.082C513.04,489.627,513.04,482.873,508.874,478.708z M202.667,362.667 c-88.229,0-160-71.771-160-160s71.771-160,160-160s160,71.771,160,160S290.896,362.667,202.667,362.667z"></path></svg></span>
+                            <span class="icon"><svg viewBox="0 0 511.999 511.999">
+                                    <path
+                                        d="M508.874,478.708L360.142,329.976c28.21-34.827,45.191-79.103,45.191-127.309c0-111.75-90.917-202.667-202.667-202.667 S0,90.917,0,202.667s90.917,202.667,202.667,202.667c48.206,0,92.482-16.982,127.309-45.191l148.732,148.732 c4.167,4.165,10.919,4.165,15.086,0l15.081-15.082C513.04,489.627,513.04,482.873,508.874,478.708z M202.667,362.667 c-88.229,0-160-71.771-160-160s71.771-160,160-160s160,71.771,160,160S290.896,362.667,202.667,362.667z">
+                                    </path>
+                                </svg></span>
                         </button>
                     </li>
                     <li class="d-none d-lg-inline-block">
                         <button type="button" class="news10-h-manu-btn">
-                            <svg viewBox="0 0 20 20"> <circle cx="17.9" cy="2" r="2.1"/> <circle cx="2.1" cy="10" r="2.1"/> <circle cx="10" cy="10" r="2.1"/> <circle cx="17.9" cy="10" r="2.1"/> <circle cx="2.1" cy="18" r="2.1"/> <circle cx="10" cy="18" r="2.1"/> <circle cx="18" cy="18" r="2.1"/> <circle cx="2.1" cy="2" r="2.1"/> <circle cx="10" cy="2" r="2.1"/> </svg>
+                            <svg viewBox="0 0 20 20">
+                                <circle cx="17.9" cy="2" r="2.1" />
+                                <circle cx="2.1" cy="10" r="2.1" />
+                                <circle cx="10" cy="10" r="2.1" />
+                                <circle cx="17.9" cy="10" r="2.1" />
+                                <circle cx="2.1" cy="18" r="2.1" />
+                                <circle cx="10" cy="18" r="2.1" />
+                                <circle cx="18" cy="18" r="2.1" />
+                                <circle cx="2.1" cy="2" r="2.1" />
+                                <circle cx="10" cy="2" r="2.1" />
+                            </svg>
                         </button>
                     </li>
                     <li class="d-lg-none">
@@ -97,11 +109,11 @@
         <i class="fa fa-times"></i>
     </div>
     <ul>
-        <li><a href="{{route('home')}}">{{ $homeContactus[0]['type'] }}</a>
+        <li><a href="{{ route('home') }}">{{ __('Home One') }}</a>
         </li>
-        {{--start menu dynamic mobile--}}
+        {{-- start menu dynamic mobile --}}
         @include('frontend.layouts._menu_mobile')
-        {{--end menu dynamic mobile--}}
+        {{-- end menu dynamic mobile --}}
     </ul>
 </div>
 
@@ -110,7 +122,7 @@
     <div class="container">
         <form class="news10-search-form">
             <input type="search" class="form-control" placeholder="Search..." autocomplete="off">
-            <button class="theme-btn blue-btn">{{__('Search')}}</button>
+            <button class="theme-btn blue-btn">{{ __('Search') }}</button>
         </form>
     </div>
 </div>

@@ -22,19 +22,19 @@ class SetLocale
             return $next($request);
         }
 
-        if (auth()->check()) {
-            if ($request->has('lang')) {
-                auth()->user()->update(['lang' => $request->lang]);
-            }
-            $lang = auth()->user()->lang ?? 'en';
-        } else {
-            if ($request->has('lang')) {
-                session(['lang' => $request->lang]);
-            }
-            $lang =  session('lang') ?? 'ar';
-        }
+        // if (auth()->check()) {
+        //     if ($request->has('lang')) {
+        //         auth()->user()->update(['lang' => $request->lang]);
+        //     }
+        //     $lang = auth()->user()->lang ?? 'en';
+        // } else {
+        //     if ($request->has('lang')) {
+        //         session(['lang' => $request->lang]);
+        //     }
+        //     $lang =   'ar';
+        // }
 
-        app()->setLocale($lang);
+        app()->setLocale('ar');
 
         return $next($request);
     }

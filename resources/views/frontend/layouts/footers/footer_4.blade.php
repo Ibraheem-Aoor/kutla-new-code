@@ -3,8 +3,8 @@
         <a href="{{ URL('/') }}" class="news10-food-footer-logo"><img src="{{ asset($settings->logo_footer) }}" alt=""></a>
         <div class="news10-food-footer-nav">
             <ul>
-                <li><a href="{{ URL('/') }}">{{ $homeContactus[0]['type'] }}</a></li>
-                <li><a href="{{ route('contactus') }}">{{ $homeContactus[1]['type'] }}</a></li>
+                <li><a href="{{ URL('/') }}">{{ __('Home One')}}</a></li>
+                <li><a href="{{ route('contactus') }}">{{ @$homeContactus[0]['name'] }}</a></li>
             </ul>
         </div>
         <div class="news10-food-social-link">

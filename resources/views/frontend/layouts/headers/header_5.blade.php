@@ -4,24 +4,20 @@
     <div class="container">
         <div class="news10-header-wrapper">
             <div class="news10-header-logo">
-                <a class="header-logo"href="{{ URL('/') }}"><img src="{{ asset($settings->logo) }}" alt="{{ asset($settings->logo) }}"></a>
+                <a class="header-logo"href="{{ URL('/') }}"><img src="{{ asset($settings->logo) }}"
+                        alt="{{ asset($settings->logo) }}"></a>
 
             </div>
             <div class="news10-main-menu-wrapper">
                 <div class="news10-main-menu desktop-menu">
                     <ul>
-                        <li class="dropdown"><a href="{{route('home')}}">{{ $homeContactus[0]['type'] }}</a>
-                            <ul class="dropdown-menu">
-                                <li><a href="{{route('home-one')}}">{{__('Home One')}}</a></li>
-                                <li><a href="{{route('home-two')}}">{{__('Home Two')}}</a></li>
-
-                            </ul>
-                        </li>
-                        </li>
-                        {{--start menu dynamic--}}
+                        <li>
+                            <a href="{{ route('home') }}">{{ __('Home One') }}</a>
+                        </li> &nbsp;&nbsp;&nbsp;
+                        {{-- start menu dynamic --}}
                         @include('frontend.layouts._menu_one')
-                        {{--end menu dynamic--}}
-                        <li ><a href="{{ route('contactus') }}">{{ $homeContactus[1]['type'] }}</a></li>
+                        {{-- end menu dynamic --}}
+                        <li><a href="{{ route('contactus') }}">{{ @$homeContactus[0]['name'] }}</a></li>
                     </ul>
                 </div>
                 <div class="news10-nav-right">
@@ -41,11 +37,11 @@
         <i class="fa fa-times"></i>
     </div>
     <ul>
-        <li><a href="{{route('home')}}">{{ home() }}</a>
+        <li><a href="{{ route('home') }}">{{ home() }}</a>
         </li>
-        {{--start menu dynamic mobile--}}
+        {{-- start menu dynamic mobile --}}
         @include('frontend.layouts._menu_mobile')
-        {{--end menu dynamic mobile--}}
+        {{-- end menu dynamic mobile --}}
     </ul>
 </div>
 <!-- header end -->
@@ -55,7 +51,7 @@
     <div class="container">
         <form class="news10-search-form">
             <input type="search" class="form-control" placeholder="Search..." autocomplete="off">
-            <button class="theme-btn">{{__('Search')}}</button>
+            <button class="theme-btn">{{ __('Search') }}</button>
         </form>
     </div>
 </div>

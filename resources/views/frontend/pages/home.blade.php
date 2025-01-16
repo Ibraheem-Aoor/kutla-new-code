@@ -1097,7 +1097,7 @@
                     <div class="col-lg-2">
                         <div class="card maan-card-img">
                             <a
-                                href="{{ route('photogallery.details', ['id' => $latestphotogallery->id, 'slug' => Str::slug($latestphotogallery->title)]) }}">
+                                href="{{ route('photogallery.details', ['id' => $latestphotogallery->id]) }}">
                                 <img loading="lazy" src="{{ asset($latestphotogallery->image) }}" alt="top-news">
                             </a>
 
@@ -1105,7 +1105,7 @@
                                 <span class="maan-tag-red">{{ __('Fashion') }}</span>
                                 <div class="maan-text">
                                     <h4><a
-                                            href="{{ route('photogallery.details', ['id' => $latestphotogallery->id, 'slug' => Str::slug($latestphotogallery->title)]) }}">{{ $latestphotogallery->title }}
+                                            href="{{ route('photogallery.details', ['id' => $latestphotogallery->id]) }}">{{ $latestphotogallery->title }}
                                             <br> {{ __('132.2m') }}</a></h4>
                                     <ul>
                                         <li>

@@ -63,7 +63,7 @@
                             <form class="row g-5" action="{{ route('contactus.store') }}" method="POST">
                                 @csrf
                                 <div class="col-md-4">
-                                    <input type="text" name="name" class="form-control input-style-2" placeholder="Name">
+                                    <input type="text" name="name" class="form-control input-style-2" placeholder="{{ __('Name') }}">
                                     @error('name')
                                     <span class="text-danger">
                                         {{$message}}
@@ -71,7 +71,7 @@
                                     @enderror
                                 </div>
                                 <div class="col-md-4">
-                                    <input type="email" name="email" class="form-control input-style-2" placeholder="Email">
+                                    <input type="email" name="email" class="form-control input-style-2" placeholder="{{ __('Email') }}">
                                     @error('email')
                                     <span class="text-danger">
                                         {{$message}}
@@ -79,10 +79,10 @@
                                     @enderror
                                 </div>
                                 <div class="col-md-4">
-                                    <input type="text" name="website" class="form-control input-style-2" placeholder="Website">
+                                    <input type="text" name="website" class="form-control input-style-2" placeholder="{{ __('Website') }}">
                                 </div>
                                 <div class="col-12">
-                                    <textarea name="message" class="form-control input-style-2" placeholder="Message"></textarea>
+                                    <textarea name="message" class="form-control input-style-2" placeholder="{{ __('Message') }}"></textarea>
                                     @error('message')
                                     <span class="text-danger">
                                         {{$message}}

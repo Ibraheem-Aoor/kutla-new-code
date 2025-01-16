@@ -252,7 +252,7 @@
                                 @foreach ($photogalleries as $photogallery)
                                     <li>
                                         <a
-                                            href="{{ route('photogallery.details', ['id' => $photogallery->id, 'slug' => \Illuminate\Support\Str::slug($photogallery->title)]) }}"><img
+                                            href="{{ route('photogallery.details', ['id' => $photogallery->id]) }}"><img
                                                 loading="lazy" src="{{ asset($photogallery->image) }}"
                                                 alt="gallery"></a>
                                     </li>

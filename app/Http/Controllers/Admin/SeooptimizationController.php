@@ -8,6 +8,7 @@ use App\Models\Seooptimization;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\URL;
+use Spatie\Sitemap\SitemapGenerator;
 
 class SeooptimizationController extends Controller
 {
@@ -81,18 +82,19 @@ class SeooptimizationController extends Controller
 
     public function maanSeooptimzationSitemape()
     {
-        $site = App::make('sitemap');
-
+        set_time_limit(0);
+        ini_set('max_execution_time', 0);
+        SitemapGenerator::create(config('app.url'))->writeToFile(public_path('sitemap.xml'));
         $latestnews = News::join('newssubcategories','news.subcategory_id','=','newssubcategories.id')
             ->join('newscategories','newssubcategories.category_id','=','newscategories.id')
             ->select('news.id','news.title','news.date','news.created_at','newscategories.name as news_category')
             ->latest()
             ->get();
-        foreach ($latestnews as $news){
-            $site->add(URL::to(strtolower($news->news_category)), $news->created_at,1.0,'daily');
-        }
+        // foreach ($latestnews as $news){
+        //     $site->add(URL::to(strtolower($news->news_category)), $news->created_at,1.0,'daily');
+        // }
 
-        $site->store('xml','sitemap');
+        // $site->store('xml','sitemap');
 
         $this->setSuccess('Generated');
         return redirect()->route('admin.seo.index');

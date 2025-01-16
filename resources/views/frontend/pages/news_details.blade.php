@@ -117,7 +117,7 @@
                         </div>
 
                         <div class="social-media blog-details-social">
-                            <h6>Share Now</h6>
+                            <h6>{{ __('share_now') }}</h6>
                             <ul>
                                 <li>
                                     <a href="https://www.facebook.com/sharer/sharer.php?u= {{url()->current()}}" target="_blank"><i class="fab fa-facebook-f"></i></a>
@@ -136,7 +136,7 @@
                             <form class="row" action="{{route('news.comment',$getnews->id)}}" method="POST">
                                 @csrf
                                 <div class="col-lg-6">
-                                    <input type="text" name="name" placeholder="Your Name">
+                                    <input type="text" name="name" placeholder="{{ __('Name') }}">
                                     @error('name')
                                     <span class="text-danger">
                                         {{$message}}
@@ -144,7 +144,7 @@
                                     @enderror
                                 </div>
                                 <div class="col-lg-6">
-                                    <input type="email" name="email" placeholder="Your Email">
+                                    <input type="email" name="email" placeholder="{{ __('Email') }}">
                                     @error('email')
                                     <span class="text-danger">
                                         {{$message}}
@@ -152,7 +152,7 @@
                                     @enderror
                                 </div>
                                 <div class="col-12">
-                                    <textarea name="comment" placeholder="Write Comments"></textarea>
+                                    <textarea name="comment" placeholder="{{ __('write_comment') }}"></textarea>
                                     @error('comment')
                                     <span class="text-danger">
                                         {{$message}}
@@ -246,7 +246,7 @@
                                     @endphp
                                     @foreach($photogalleries as $photogallery)
                                         <li>
-                                            <a href="{{ route('photogallery.details',['id'=>$photogallery->id,'slug'=>\Illuminate\Support\Str::slug($photogallery->title)]) }}"><img loading="lazy" src="{{ asset($photogallery->image) }}" alt="gallery"></a>
+                                            <a href="{{ route('photogallery.details',['id'=>$photogallery->id]) }}"><img loading="lazy" src="{{ asset($photogallery->image) }}" alt="gallery"></a>
                                         </li>
                                     @endforeach
                                 </ul>

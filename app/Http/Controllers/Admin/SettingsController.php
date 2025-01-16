@@ -113,6 +113,7 @@ class SettingsController extends Controller
         //frontend_logo
          if ($request->hasFile('frontend_logo')){
 
+
             if ($request->frontend_logo!=''){
 
                 if (File::exists($settings->frontend_logo)){
@@ -218,7 +219,6 @@ class SettingsController extends Controller
 
     public function maanSettingsUpdate(Request $request,Settings $settings)
     {
-
         //title ,name, short name validation..
         if ($request->title||$request->name||$request->short_name){
             $request->validate([
@@ -323,6 +323,7 @@ class SettingsController extends Controller
             }else{
                 $frontend_logo_urls         = $settings->frontend_logo ;
             }
+            $settings->frontend_logo         = $frontend_logo_urls;
         }
 
         // logo..

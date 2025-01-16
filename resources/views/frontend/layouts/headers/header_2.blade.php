@@ -55,8 +55,8 @@
     var optionsWeekday = { weekday: 'long' };
     var options = { year: 'numeric', month: 'long', day: 'numeric' };
     var date = new Date();
-    document.getElementById("maan-current-week-day").innerHTML =date.toLocaleDateString("en-US", optionsWeekday);
-    document.getElementById("maan-current-date").innerHTML =date.toLocaleDateString("en-US", options);
+    document.getElementById("maan-current-week-day").innerHTML =date.toLocaleDateString("{{ $locale }}", optionsWeekday);
+    document.getElementById("maan-current-date").innerHTML =date.toLocaleDateString("{{ $locale }}", options);
 
 </script>
 

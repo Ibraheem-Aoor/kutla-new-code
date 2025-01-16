@@ -119,7 +119,7 @@
                         {{--end menu dynamic--}}
 
                         <li>
-                            <a href="{{ route('contactus') }}">{{ Str::ucfirst( $homeContactus[1]['type'] ?? '') }}</a>
+                            <a href="{{ route('contactus') }}">{{ Str::ucfirst( @$homeContactus[0]['name'] ?? '') }}</a>
                         </li>
 
                     </ul>

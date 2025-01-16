@@ -772,5 +772,22 @@
     "Forgot Password": "نسيت كلمة المرور؟",
     "Enter the email address associated with your account" : "الرجاء ادخال البريد الالكتروني لاستعادة كلمة المرور",
     "Change Password" : "تغيير كلمة المرور",
-    "Create new password, it must be Strong password." : "ادخل كلمة المرور ,  يجب ان تكون قوية"
+    "Create new password, it must be Strong password." : "ادخل كلمة المرور ,  يجب ان تكون قوية",
+    "share_now" : "شارك الأن",
+    "Leave a Reply" : "اترك رد",
+    "Your email address will not be published. Required fields are marked *" : "عنوان بريدك الإلكتروني لن يتم نشره. الحقول الإجبارية  *",
+    "write_comment":"اكتب تعليق",
+    "Post Comment": "نشر التعليق",
+    "Gallery": "معرض الصور",
+    "Social Media": "وسائل التواصل الاجتماعي",
+    "Search" : "بحث",
+    "Home One" : "الصفحة الرئيسية",
+    "Home Two" : "الصفحة الرئيسية",
+    "Search ..." : "بحث ...",
+    "Follow us :" : "تابعنا على :",
+    "Popular Post" : "المنشورات الشائعة",
+    "Most Viewed Posts" : "المنشورات الأكثر مشاهدة",
+    "Website" : "الموقع الإلكتروني",
+    "Message" : "الرسالة"
+
 }

@@ -119,6 +119,7 @@ class TransferDataService
                             continue;
                         }
                         $photo_gallery = Photogallery::query()->create([
+                            'id' => $albom->id,
                             'title' => $albom->name,
                             'description' => $albom->details ?? $albom->name,
                             'created_at' => $albom->created_at,

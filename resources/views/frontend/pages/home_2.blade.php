@@ -184,9 +184,9 @@
 
                                     </div>
                                     <div class="card-body">
-                                        <a href="{{ route('photogallery.details', ['id' => $latestphotogallery->id, 'slug' => Str::slug($latestphotogallery->title)]) }}"
+                                        <a href="{{ route('photogallery.details', ['id' => $latestphotogallery->id]) }}"
                                             class="news-ctg-link">{{ $latestphotogallery->title }}</a>
-                                        <a href="{{ route('photogallery.details', ['id' => $latestphotogallery->id, 'slug' => Str::slug($latestphotogallery->title)]) }}"
+                                        <a href="{{ route('photogallery.details', ['id' => $latestphotogallery->id]) }}"
                                             class="news-title">{{ $latestphotogallery->user_name }}</a>
                                     </div>
                                 </div>

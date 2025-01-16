@@ -5054,3 +5054,11 @@ section.maan-video-news-section.maan-slide-section .maan-card-slide .slick-arrow
 [dir="rtl"] .maan-most-popular-section .slick-list .card {
     margin: 0 12px;
 }
+
+[dir="rtl"] .news10-info-footer .row.news10-link-footer .news10-title::after {
+    right: 0 !important;
+}
+
+.maan-info-footer .row.maan-link-footer .maan-title::after {
+    right: 0 !important;
+}
