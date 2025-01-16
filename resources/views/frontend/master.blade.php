@@ -53,7 +53,7 @@
     <!-- toastr -->
     <link rel="stylesheet" href="{{ asset('admin/plugins/toastr/toastr.css') }}">
     <!-- Style for maannews-->
-    <link rel="stylesheet" href="{{ asset('frontend/css/maan_news_style.css') }}?v=0.01">
+    <link rel="stylesheet" href="{{ asset('frontend/css/maan_news_style.css') }}?v=0.02">
     <!-- color change for maannews-->
     <link rel="stylesheet" href="{{ asset('frontend/css/color-change.css') }}">
 
@@ -163,7 +163,7 @@
     <script src="{{ asset('frontend/js/vendor/venobox.min.js') }} "></script>
     <!-- Index -->
 
-    <script src="{{ asset('frontend/js/index.js') }}?v=0.01"></script>
+    <script src="{{ asset('frontend/js/index.js') }}?v=0.02"></script>
 
     <script src="{{ asset('frontend/js/theme.js') }} "></script>
     <!-- toastr -->
