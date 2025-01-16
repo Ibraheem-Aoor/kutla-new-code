@@ -47,7 +47,7 @@
     <!-- Venobox -->
     <link rel="stylesheet" href="{{ asset('frontend/css/venobox.min.css') }}">
     <!-- Style -->
-    <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}?v=0.01">
+    <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}?v=0.02">
     <!-- Responsive -->
     <link rel="stylesheet" href="{{ asset('frontend/css/responsive.css') }}">
     <!-- toastr -->
