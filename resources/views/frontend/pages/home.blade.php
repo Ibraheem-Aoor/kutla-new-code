@@ -1102,7 +1102,7 @@
                             </a>
 
                             <div class="card-body maan-card-body">
-                                <span class="maan-tag-red">{{ __('Fashion') }}</span>
+                                <span class="maan-tag-red d-none">{{ __('Fashion') }}</span>
                                 <div class="maan-text">
                                     <h4><a
                                             href="{{ route('photogallery.details', ['id' => $latestphotogallery->id]) }}">{{ $latestphotogallery->title }}
