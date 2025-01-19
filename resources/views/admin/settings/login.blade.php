@@ -21,7 +21,7 @@
                                 <div class="row">
 
                                     <div class="col-lg-6 settings-image-upload">
-                                        <label class="title">{{ __('Login Page Icon') }}</label>
+                                        <label class="title">{{ __('c') }}</label>
                                         <div class="upload-img-v2">
                                             <label class="upload-v4 settings-upload-v4">
                                                 <div class="img-wrp">

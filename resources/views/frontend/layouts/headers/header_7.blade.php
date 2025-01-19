@@ -4,6 +4,7 @@
     <div class="news10-top-bar">
         <div class="container">
             <div class="row align-items-center">
+                @if(!breakingnews()?->isEmpty())
                 <div class="col-lg-9 col-xl-7">
                     <div class="news10-news-slide news-tech-breaking">
                         <div class="news10-slide-title">
@@ -13,7 +14,8 @@
                                 <div class="newss10-next-btn" id="breakingnews-next"><i
                                         class=" fal fa-chevron-right"></i></div>
                             </div>
-                            <h6>Breaking News : </h6>
+                            <h6>{{ __('Breaking News :') }}</h6>
+
                         </div>
                         <div class="news10-techheader-breaking swiper-container">
                             <div class="swiper-wrapper">
@@ -22,6 +24,7 @@
                         </div>
                     </div>
                 </div>
+                @endif
                 <div class="col-lg-3 col-xl-3">
                     <div class="news10-social-link">
                         <ul>
