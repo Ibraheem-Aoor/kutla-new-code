@@ -1,7 +1,7 @@
 <footer>
-    <section class="news10-info-footer news10-tech-footer">
+    <section class="news10-info-footer news10-tech-footer" style="padding: 15px !important;">
         <div class="container">
-            <div class="row align-items-center">
+            <div class="row align-items-center" style="padding:5px !important;">
                 <div class="col-lg-2">
                     <div class="logo">
                         <a href="{{ URL('/') }}"><img src="{{ asset($settings->logo_footer ?? '') }}" alt="footer-logo"></a>
@@ -107,7 +107,7 @@
                     </div>
                 </div>
             </div>
-            <div class="news10-main-footer">
+            <div class="news10-main-footer text-center" style="padding-top: 5p !important;">
                 <h6>{{__('©')}}{{ get_option('company-info')['copyright'] ?? '' }}</h6>
             </div>
         </div>
