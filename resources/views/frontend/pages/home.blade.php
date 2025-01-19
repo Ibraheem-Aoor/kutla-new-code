@@ -1020,10 +1020,8 @@
                                 <img loading="lazy" src="{{ asset('/maan/images/26.png') }}" alt="">
                             @endif
                             <a href="" class="news-ctg-link">{{ $video->title }}</a>
-                            <a class="venobox" data-autoplay="false" data-vbtype="video" data-maxwidth="800px"
-                                href="{{ url($video->video) }}">
-                                <i class="fas fa-play"></i>
-                            </a>
+                            <a class="venobox vbox-item" data-autoplay="true" data-vbtype="video"
+                                href="{{ asset($video->video) }}"><i class="fas fa-play"></i></a>
                         </div>
                         <div class="card-body">
                             <a href="" class="news-title p-2">{{ $video->description }}</a>
