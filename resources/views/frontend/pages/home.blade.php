@@ -1008,8 +1008,7 @@
                         <div class="card iframe-video-wrapper p-2">
                             <iframe src="{{ asset($video->video) }}" title="YouTube video player" frameborder="0"
                                 class="w-50 m-auto"
-                                allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                autostart="false"
+                                allow="autoplay 'none'" autoplay="0" autostart="0"
                                 allowfullscreen></iframe>
                         </div>
                     @endif
