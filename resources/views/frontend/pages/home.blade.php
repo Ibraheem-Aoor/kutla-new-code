@@ -1009,6 +1009,7 @@
                             <iframe src="{{ asset($video->video) }}" title="YouTube video player" frameborder="0"
                                 class="w-50 m-auto"
                                 allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                autostart="false"
                                 allowfullscreen></iframe>
                         </div>
                     @endif
