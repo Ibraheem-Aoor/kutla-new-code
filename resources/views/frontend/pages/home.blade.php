@@ -1020,8 +1020,12 @@
                                 <img loading="lazy" src="{{ asset('/maan/images/26.png') }}" alt="">
                             @endif
                             <a href="" class="news-ctg-link">{{ $video->title }}</a>
-                            <a class="venobox vbox-item" data-autoplay="true" data-vbtype="video"
-                                href="{{ asset($video->video) }}"><i class="fas fa-play"></i></a>
+
+                            <!-- Modified video link -->
+                            <a class="venobox vbox-item" data-autoplay="true" data-vbtype="video" data-maxwidth="800px"
+                                href="{{ asset($video->video) }}" data-title="{{ $video->title }}">
+                                <i class="fas fa-play"></i>
+                            </a>
                         </div>
                         <div class="card-body">
                             <a href="" class="news-title p-2">{{ $video->description }}</a>
@@ -1173,4 +1177,16 @@
             </div>
         </div>
     </section>
+    <!-- Add this script at the bottom of your page -->
+<script>
+    $(document).ready(function(){
+        $('.venobox').venobox({
+            spinner: 'wave',
+            spinColor: '#e94444',
+            titleattr: 'data-title',
+            numeratio: true,
+            infinigall: true
+        });
+    });
+</script>
 @endsection
