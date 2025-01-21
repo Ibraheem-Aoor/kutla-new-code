@@ -28,7 +28,7 @@ use Carbon\Carbon;
                               </div>
                               <div class="d-flex flex-column align-items-center">
                                   <p class='free-user'>{{ $total_free_users }}</p>
-                                  <h5 class='free-user-title'>{{ __('Free User') }}</h5>
+                                  <h5 class='free-user-title'>{{ __('Users') }}</h5>
                               </div>
                           </div>
                   </div>
@@ -38,22 +38,9 @@ use Carbon\Carbon;
                 </div>
 
                 <div class=" counter-container p-0 col-12 col-md-8 ">
-                    <div class="couter-box1 col-3">
-                        <div class="icons">
-                            <img src="{{ asset('assets/images/dashboard/svg/01.svg') }}" alt="">
-                        </div>
-                        <div class="content-side">
 
-                            <h5 class='text-center pt-2 pb-2'>
-                                {{ __('8+') }}
-                                <sup id="innerspan">{{ __('') }}</sup>
-                            </h5>
-                            <p class=''>{{ __('Feature Section') }}</p>
 
-                        </div>
-                    </div>
-
-                    <div class="couter-box2 col-3">
+                    <div class="couter-box2 col-4">
                         <div class="icons">
                             <img src="{{ asset('assets/images/dashboard/svg/02.svg') }}" alt="">
                         </div>
@@ -68,7 +55,7 @@ use Carbon\Carbon;
                         </div>
                     </div>
 
-                    <div class="couter-box3 col-3">
+                    <div class="couter-box3 col-4">
                         <div class="icons">
                             <img src="{{ asset('assets/images/dashboard/svg/03.svg') }}" alt="">
                         </div>
@@ -83,7 +70,7 @@ use Carbon\Carbon;
                         </div>
                     </div>
 
-                    <div class="couter-box4 col-3">
+                    <div class="couter-box4 col-4">
                         <div class="icons">
                             <img src="{{ asset('assets/images/dashboard/svg/04.svg') }}" alt="">
                         </div>

@@ -47,7 +47,7 @@
     <!-- Venobox -->
     <link rel="stylesheet" href="{{ asset('frontend/css/venobox.min.css') }}">
     <!-- Style -->
-    <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}?v=0.02">
+    <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}?v=0.03">
     <!-- Responsive -->
     <link rel="stylesheet" href="{{ asset('frontend/css/responsive.css') }}">
     <!-- toastr -->
@@ -59,7 +59,11 @@
 
     @stack('styles')
     {{-- Arabic --}}
-    <link rel="stylesheet" href="{{ asset('assets/css/arabic.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/css/arabic.css') }}?v=0.02">
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.rtl.min.css') }}">
 
     @if ($googleanalytics)

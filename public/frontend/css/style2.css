@@ -52,7 +52,7 @@ a {
 }
 
 :root {
-  --font-jost: "Jost", sans-serif;
+  --font-jost: "Tajawal", serif;
   --font-now: "now", sans-serif;
   --fw-100: 100;
   --fw-200: 200;
@@ -1377,7 +1377,7 @@ img {
 }
 
 /*--
-    - Font Famaly 
+    - Font Famaly
 -----------------------------------------*/
 /*--
     - Font weight
@@ -1459,8 +1459,8 @@ img {
   margin-top: 30px;
 }
 
-/*--- 
--- Padding 
+/*---
+-- Padding
 -------------------------------------------*/
 /*----------------------------------------*/
 /*  Component CSS
@@ -6899,17 +6899,17 @@ body {
 }
 
 /*=========================
-   news10 tech news page css start 
+   news10 tech news page css start
 ===========================*/
 /*
 Theme Name: news10 News HTML5 Template
 Theme URI: https://news10theme.com/news10-news
 Author: news10 Theme
-Author URI: https://news10theme.com 
+Author URI: https://news10theme.com
 Desing by: news10 Theme
 Version: 1.0
-License: 
-Tags: 
+License:
+Tags:
 */
 /*================================================
 [  Table of contents  ]
@@ -6969,7 +6969,7 @@ html {
 body {
   margin: 0;
   padding: 0 !important;
-  font-family: "Jost", sans-serif;
+  font-family: "Tajawal", serif;
   font-size: 14px;
   line-height: 25px;
   letter-spacing: 0px;
@@ -6984,7 +6984,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Jost", sans-serif;
+  font-family: "Tajawal", serif;
   color: var(--news10-color-black);
   padding: 0;
   margin: 0;
@@ -8470,11 +8470,11 @@ svg {
 Theme Name: news10 News HTML5 Template
 Theme URI: https://news10theme.com/news10-news
 Author: news10 Theme
-Author URI: https://news10theme.com 
+Author URI: https://news10theme.com
 Desing by: news10 Theme
 Version: 1.0
-License: 
-Tags: 
+License:
+Tags:
 */
 /*================================================
 [  Table of contents  ]
@@ -8508,9 +8508,9 @@ Tags:
 
     14 news10 Sports News
 
-    15 news10 Technology News  
+    15 news10 Technology News
 
-    16 news10 Don't Miss 
+    16 news10 Don't Miss
 
     17 news10 Lifestyle News
 
@@ -8571,7 +8571,7 @@ html {
 body {
   margin: 0;
   padding: 0 !important;
-  font-family: "Jost", sans-serif;
+  font-family: "Tajawal", serif;
   font-size: 14px;
   line-height: 25px;
   letter-spacing: 0px;
@@ -8586,7 +8586,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Jost", sans-serif;
+  font-family: "Tajawal", serif;
   color: var(--news10-color-black);
   padding: 0;
   margin: 0;
@@ -10197,7 +10197,7 @@ svg {
 }
 
 /*=============================
-    15 news10 Technology News  
+    15 news10 Technology News
 ===============================*/
 .news10-technology-news-section .col-lg-3 .news10-default-post {
   margin-top: 24px;
@@ -10210,7 +10210,7 @@ svg {
 }
 
 /*=============================
-    16 news10 Don't Miss 
+    16 news10 Don't Miss
 ===============================*/
 .news10-don-t-miss-section {
   padding-top: 0px;
@@ -11882,11 +11882,11 @@ svg {
 Theme Name: news10 News HTML5 Template
 Theme URI: https://news10theme.com/news10-news
 Author: news10 Theme
-Author URI: https://news10theme.com 
+Author URI: https://news10theme.com
 Desing by: news10 Theme
 Version: 1.0
-License: 
-Tags: 
+License:
+Tags:
 */
 /*================================================
 [  Table of contents  ]

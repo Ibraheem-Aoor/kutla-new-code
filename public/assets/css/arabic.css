@@ -1,6 +1,7 @@
 [dir="rtl"] body {
     background: #ecf1f9 !important;
 }
+
 [dir="rtl"] a,
 [dir="rtl"] button,
 [dir="rtl"] .btn,
@@ -8,13 +9,15 @@
 [dir="rtl"] ul li a {
     text-decoration: none !important;
 }
+
 [dir="rtl"] .dropdown-item.active,
 [dir="rtl"] .dropdown-item:active,
 [dir="rtl"] .nav-pills .nav-link.active,
-[dir="rtl"] .nav-pills .show > .nav-link,
+[dir="rtl"] .nav-pills .show>.nav-link,
 [dir="rtl"] .btn-primary {
     background-color: #c52127 !important;
 }
+
 [dir="rtl"] .btn-primary {
     border-color: #c52127 !important;
 }
@@ -56,6 +59,7 @@
 [dir="rtl"] ul {
     padding-right: 0;
 }
+
 [dir="rtl"] .section-container {
     padding-right: 300px;
     padding-left: 0;
@@ -65,34 +69,41 @@
     padding-left: 0;
     padding-right: 80px;
 }
+
 [dir="rtl"] .side-bar {
     left: unset;
     right: 0;
 }
+
 [dir="rtl"] .sidebar-opner {
     margin-right: 0;
     margin-left: 20px;
 }
+
 [dir="rtl"] .side-bar-manu li a .sidebar-icon {
     margin-left: 10px;
     margin-right: 0;
 }
+
 [dir="rtl"] .side-bar.active .side-bar-manu li a .sidebar-icon {
     margin-right: 0;
     margin-left: 30px;
     left: unset;
     right: -10px;
 }
+
 [dir="rtl"] .side-bar-manu li .dropdown-menu li {
     padding-right: 15px;
     padding-left: 0;
 }
+
 [dir="rtl"] .side-bar-manu li .dropdown-menu {
     margin-left: 0;
     margin-right: 20px;
     border-left: 0;
     border-right: 1px solid #fff;
 }
+
 [dir="rtl"] .side-bar-manu .dropdown::before {
     left: 15px;
     right: unset;
@@ -110,26 +121,32 @@
 [dir="rtl"] .gpt-dashboard-card .couter-box .icons {
     margin-left: 5px;
 }
+
 [dir="rtl"] .gpt-dashboard-card .couter-box h5,
 [dir="rtl"] .gpt-dashboard-card .couter-box p {
     margin-bottom: 0;
 }
+
 [dir="rtl"] .gpt-dashboard-chart .card-header .gpt-up-down-arrow span {
     left: 20px !important;
     right: unset !important;
 }
+
 [dir="rtl"] .print-btn i {
     margin-right: 0;
     margin-left: 6px;
 }
+
 [dir="rtl"] .password-input .hide-pass {
     left: 10px;
     right: unset;
 }
+
 [dir="rtl"] .table-action .dropdown-menu a i {
     margin-left: 7px;
     margin-right: 0;
 }
+
 [dir="rtl"] .arabic-text-right {
     text-align: right !important;
 }
@@ -138,6 +155,7 @@
     left: unset;
     right: 10px;
 }
+
 [dir="rtl"] .order-form-section .settings-image-upload .title {
     right: 30px !important;
 }
@@ -146,9 +164,11 @@
     border-top-left-radius: 4px !important;
     border-bottom-left-radius: 4px !important;
 }
-[dir="rtl"] .table > :not(:last-child) > :last-child > * {
+
+[dir="rtl"] .table> :not(:last-child)> :last-child>* {
     border-bottom-color: rgba(31, 31, 31, 0.1) !important;
 }
+
 [dir="rtl"] .table th {
     background-color: rgba(31, 31, 31, 0.05) !important;
 }
@@ -196,9 +216,11 @@
 [dir="rtl"] .toast.toast-success {
     background-color: green !important;
 }
+
 [dir="rtl"] .toast.toast-error {
     background-color: #c52127 !important;
 }
+
 /* notification style css end */
 
 /* delete modal style css start */
@@ -207,6 +229,7 @@
     direction: ltr;
     unicode-bidi: embed;
 }
+
 /* delete modal style css end */
 
 
@@ -215,6 +238,7 @@
         right: 77%;
     }
 }
+
 @media only screen and (min-width: 0px) and (max-width: 360px) {
     [dir="rtl"] .table-search .position-absolute {
         right: 75%;
@@ -227,6 +251,7 @@
         grid-template-columns: repeat(5, 1fr);
     }
 }
+
 @media only screen and (min-width: 880px) and (max-width: 1424px) {
     [dir="rtl"] .gpt-dashboard-card.counter-grid-6 {
         grid-template-columns: repeat(3, 1fr);
@@ -244,10 +269,12 @@
         height: 44px;
         width: 44px;
     }
+
     [dir="rtl"] .gpt-dashboard-card .couter-box h5 {
         font-size: 18px;
         line-height: 28px;
     }
+
     [dir="rtl"] .gpt-dashboard-card .couter-box p {
         font-size: 14px;
         line-height: 24px;
@@ -267,27 +294,33 @@
         font-size: 11px;
     }
 }
+
 @media (max-width: 1150px) {
     [dir="rtl"] .side-bar {
         right: -100%;
         left: unset;
     }
+
     [dir="rtl"] .side-bar.active {
         right: 0;
         left: unset;
     }
+
     [dir="rtl"] .section-container {
         padding-right: 0;
         padding-left: 0;
     }
+
     [dir="rtl"] .section-container.active {
         padding-left: 0;
         padding-right: 0;
     }
+
     [dir="rtl"] .close-btn {
         left: 15px;
         right: unset;
     }
+
     [dir="rtl"] .side-bar.active .side-bar-manu li a .sidebar-icon {
         margin-left: 0;
     }
@@ -297,4 +330,10 @@
     [dir="rtl"] .gpt-dashboard-card .couter-box p {
         width: 100%;
     }
+}
+
+* {
+    font-family: "Tajawal", serif;
+    font-weight: 500;
+    font-style: normal;
 }

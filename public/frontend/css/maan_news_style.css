@@ -53,7 +53,7 @@ a {
 }
 
 :root {
-    --font-jost: "Jost", sans-serif;
+    --font-jost: "Tajawal", serif;
     --font-now: "now", sans-serif;
     --fw-100: 100;
     --fw-200: 200;
@@ -7964,7 +7964,7 @@ html {
 body {
     margin: 0;
     padding: 0 !important;
-    font-family: "Jost", sans-serif;
+    font-family: "Tajawal", serif;
     font-size: 14px;
     line-height: 25px;
     letter-spacing: 0px;
@@ -7979,7 +7979,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Jost", sans-serif;
+    font-family: "Tajawal", serif;
     color: var(--news10-color-black);
     padding: 0;
     margin: 0;
@@ -9822,7 +9822,7 @@ html {
 body {
     margin: 0;
     padding: 0 !important;
-    font-family: "Jost", sans-serif;
+    font-family: "Tajawal", serif;
     font-size: 14px;
     line-height: 25px;
     letter-spacing: 0px;
@@ -9837,7 +9837,7 @@ h3,
 h4,
 h5,
 h6 {
-    font-family: "Jost", sans-serif;
+    font-family: "Tajawal", serif;
     color: var(--news10-color-black);
     padding: 0;
     margin: 0;

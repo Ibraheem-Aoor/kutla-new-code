@@ -221,7 +221,7 @@
                             @foreach ($popularnewscategories as $popularnewscategory)
                                 @if (!$popularnewscategory->news->isEmpty())
                                     <li class="nav-item" role="presentation">
-                                        <button class="nav-link @if ($loop->first) active @endif"
+                                        <button class="nav-link p-2  @if ($loop->first) active @endif"
                                             id="food-news-tab" data-bs-toggle="pill"
                                             data-bs-target="#{{ $popularnewscategory->slug }}"
                                             type="button">{{ $popularnewscategory->name }}</button>
