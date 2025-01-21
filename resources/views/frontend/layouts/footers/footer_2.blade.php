@@ -70,7 +70,7 @@
                                 <form>
                                     @csrf
                                     <div class="footer-group">
-                                        <input type="email" placeholder="Enter your email" class="form-control" name="email" id="maanEmail">
+                                        <input type="email" placeholder="{{ __('Enter Your Email Address') }}" class="form-control" name="email" id="maanEmail">
                                         <span type="button" class="subscribe"><i class="fa fa-paper-plane"></i></span>
                                     </div>
                                 </form>

@@ -4,17 +4,13 @@
     @if (!breakingnews()?->isEmpty())
         <div class="news10-newtop-header">
             <div class="container">
-                <h3>{{ __('Breaking News :') }}</h3>
+                <h3 class="text-danger">{{ __('Breaking News :') }}</h3>
                 <div class="news10-newbreaking-news swiper-container">
                     <div class="swiper-wrapper">
-
                         {{-- start dynamic breaking news include --}}
-
                         @include('frontend.layouts._dynamic_breakingnews')
 
                         {{-- end dynamic breaking news include --}}
-
-
 
                     </div>
                 </div>

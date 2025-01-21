@@ -344,7 +344,7 @@
                     <div class="container">
                         <div class="maan-title-center v2">
                             <div class="maan-title-icon"></div>
-                            <div class="maan-title-text">
+                            <div class="maan-title-text p-2">
                                 <h2>{{ $newscategory->name }}</h2>
                             </div>
                             <div class="maan-title-icon"></div>

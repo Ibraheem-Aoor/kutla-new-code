@@ -34,7 +34,7 @@ class OptionTableSeeder extends Seeder
                             "editor_picks": "اختيارات المحرر",
                             "show_all_btn_text": "عرض الكل",
                             "feature_post_title": "المنشورات الشائعة",
-                            "feature_video_title": "الفيديو الشائع",
+                            "feature_video_title": "مكتبة الفيديو",
                             "menu_title_one": "القائمة الرئيسية الأولى",
                             "menu_title_two": "القائمة الرئيسية الثانية",
                             "home_title": "الرئيسية",
