@@ -1158,7 +1158,7 @@
                                             alt="default thumbnail">
                                     @endif
                                     <a class="play-btn   my-video-gallery" data-autoplay="true" data-vbtype="video"
-                                        data-gall="myvidgallery" href="{{ ($video->video) }}">
+                                        data-gall="myvidgallery" href="{{ $video->video }}" data-href="{{ $video->video }}">
                                         <i class="fas fa-play"></i>
                                     </a>
 
@@ -1269,6 +1269,12 @@
 @push('scripts')
     <script>
         $(document).ready(function() {
+            // Log video URLs to check if they are being handled correctly
+            $('.my-video-gallery').each(function() {
+                console.log($(this).attr('href')); // Log each video URL
+            });
+
+            // Initialize venobox after logging
             $('.venobox').venobox();
             $('.my-video-links').venobox();
             $('.my-video-gallery').venobox();
