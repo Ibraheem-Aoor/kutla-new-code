@@ -3,7 +3,7 @@
 @endphp
 
 <nav class="side-bar">
-    <div class="side-bar-logo">
+    <div class="side-bar-logo text-center">
         <a href="javascript:void(0)">
             <img src="{{ asset($settings->icon ?? '') }}" alt="MAANEWS icon" class="brand-image img-circle elevation-3">
         </a>
