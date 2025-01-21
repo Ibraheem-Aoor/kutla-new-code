@@ -1157,10 +1157,11 @@
                                         <img loading="lazy" src="{{ asset('/maan/images/26.png') }}"
                                             alt="default thumbnail">
                                     @endif
-                                    <a class="play-btn venobox vbox-item" data-autoplay="true" data-vbtype="video"
-                                        data-maxwidth="800px" href="{{ asset($video->video) }}">
+                                    <a class="play-btn   my-video-gallery" data-autoplay="true" data-vbtype="video"
+                                        data-gall="myvidgallery" href="{{ asset($video->video) }}">
                                         <i class="fas fa-play"></i>
                                     </a>
+
                                 </div>
                                 <div class="video-info">
                                     <h4 class="video-title">{{ $video->title }}</h4>
@@ -1268,13 +1269,9 @@
 @push('scripts')
     <script>
         $(document).ready(function() {
-            $('.venobox').venobox({
-                spinner: 'wave',
-                spinColor: '#e94444',
-                titleattr: 'data-title',
-                numeratio: true,
-                infinigall: true
-            });
+            $('.venobox').venobox();
+            $('.my-video-links').venobox();
+            $('.my-video-gallery').venobox();
         });
     </script>
 @endpush
