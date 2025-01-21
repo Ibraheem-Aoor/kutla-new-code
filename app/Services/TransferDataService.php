@@ -4,6 +4,7 @@ namespace App\Services;
 
 use App\Models\GalleryImage;
 use App\Models\News;
+use App\Models\Newscategory;
 use App\Models\Photogallery;
 use App\Models\Videogallery;
 use Carbon\Carbon;
@@ -107,15 +108,13 @@ class TransferDataService
         DB::beginTransaction();
         try {
             $this->db->table('albums')->whereNull('deleted_at')
-                ->chunkById(50 , function ($kutla_alboms) {
+                ->chunkById(50, function ($kutla_alboms) {
                     foreach ($kutla_alboms as $albom) {
-                        $cover_image = $this->db->table('files_library')->where('album_id', $albom->id)->where('album_cover'  ,1)->first()?->file_name;
-                        if(!isset($cover_image))
-                        {
+                        $cover_image = $this->db->table('files_library')->where('album_id', $albom->id)->where('album_cover', 1)->first()?->file_name;
+                        if (!isset($cover_image)) {
                             $cover_image = $this->db->table('files_library')->where('album_id', $albom->id)->first()?->file_name;
                         }
-                        if(is_null($cover_image))
-                        {
+                        if (is_null($cover_image)) {
                             continue;
                         }
                         $photo_gallery = Photogallery::query()->create([
@@ -124,12 +123,12 @@ class TransferDataService
                             'description' => $albom->details ?? $albom->name,
                             'created_at' => $albom->created_at,
                             'updated_at' => $albom->updated_at,
-                            'status' =>  $albom->active,
+                            'status' => $albom->active,
                             'viewers' => $albom->read_no,
                             'image' => $cover_image,
                             'user_id' => 1,
                         ]);
-                        $albom_photos = $this->db->table('files_library')->where('album_id', $albom->id)->where('type' , 'photo')->pluck('file_name');
+                        $albom_photos = $this->db->table('files_library')->where('album_id', $albom->id)->where('type', 'photo')->pluck('file_name');
                         foreach ($albom_photos as $albom_photo) {
                             GalleryImage::query()->create([
                                 'photogallery_id' => $photo_gallery->id,
@@ -150,5 +149,15 @@ class TransferDataService
     public function getSubCategory($post)
     {
         return $post->main_news ? 1 : ($post->report ? 2 : ($post->chosen ? 3 : 1));
+    }
+
+    public function updateNewsCategory()
+    {
+        Newscategory::query()->chunkById(10, function ($cateogries) {
+            foreach ($cateogries as $category) {
+                $category->post_counter = $category->news()->count();
+                $category->save();
+            }
+        });
     }
 }

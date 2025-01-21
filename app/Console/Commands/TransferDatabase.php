@@ -46,6 +46,9 @@ class TransferDatabase extends Command
             if ($this->transfer_data_service->transferAlboms()) {
                 $this->info('Alboms Transferred Successfully');
             }
+            if ($this->transfer_data_service->updateNewsCategory()) {
+                $this->info('Categories Post Counts Updated Successfully');
+            }
         } catch (\Throwable $e) {
             $this->error('Error: ' . $e->getMessage());
         }

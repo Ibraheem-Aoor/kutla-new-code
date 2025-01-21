@@ -3,142 +3,141 @@
     @include('frontend.pages.meta')
 @endsection
 @push('styles')
-
-<style>
-    .video-content-wrapper {
-        display: grid;
-        grid-template-columns: 350px 1fr;
-        gap: 2rem;
-        direction: rtl;
-    }
-
-    .video-list {
-        display: flex;
-        flex-direction: column;
-        gap: 1rem;
-        max-height: 600px;
-        overflow-y: auto;
-    }
-
-    .video-item {
-        display: flex;
-        gap: 1rem;
-        background: rgba(255, 255, 255, 0.05);
-        padding: 0.75rem;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-
-    .video-item:hover {
-        background: rgba(255, 255, 255, 0.1);
-    }
-
-    .video-thumb {
-        position: relative;
-        width: 120px;
-        height: 80px;
-        flex-shrink: 0;
-    }
-
-    .video-thumb img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        border-radius: 4px;
-    }
-
-    .play-btn {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 30px;
-        height: 30px;
-        background: rgba(0, 0, 0, 0.7);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        color: white;
-        font-size: 0.8rem;
-    }
-
-    .video-info {
-        flex-grow: 1;
-    }
-
-    .video-title {
-        color: white;
-        font-size: 1rem;
-        margin-bottom: 0.5rem;
-    }
-
-    .video-desc {
-        color: #999;
-        font-size: 0.875rem;
-        margin: 0;
-    }
-
-    .featured-video {
-        width: 100%;
-    }
-
-    .main-video-wrapper {
-        width: 100%;
-        position: relative;
-    }
-
-    .main-video-wrapper iframe {
-        width: 100%;
-        height: 500px;
-        border-radius: 8px;
-    }
-
-    .featured-title {
-        color: white;
-        font-size: 1.25rem;
-    }
-
-    .featured-desc {
-        color: #999;
-    }
-
-    /* Custom scrollbar for video list */
-    .video-list::-webkit-scrollbar {
-        width: 6px;
-    }
-
-    .video-list::-webkit-scrollbar-track {
-        background: rgba(255, 255, 255, 0.1);
-    }
-
-    .video-list::-webkit-scrollbar-thumb {
-        background: rgba(255, 255, 255, 0.3);
-        border-radius: 3px;
-    }
-
-    /* Responsive styles */
-    @media (max-width: 992px) {
+    <style>
         .video-content-wrapper {
-            grid-template-columns: 1fr;
+            display: grid;
+            grid-template-columns: 350px 1fr;
+            gap: 2rem;
+            direction: rtl;
         }
 
         .video-list {
-            max-height: none;
-            overflow-y: visible;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .video-item {
+            display: flex;
+            gap: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.75rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .video-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .video-thumb {
+            position: relative;
+            width: 120px;
+            height: 80px;
+            flex-shrink: 0;
+        }
+
+        .video-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+
+        .play-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30px;
+            height: 30px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.8rem;
+        }
+
+        .video-info {
+            flex-grow: 1;
+        }
+
+        .video-title {
+            color: white;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .video-desc {
+            color: #999;
+            font-size: 0.875rem;
+            margin: 0;
+        }
+
+        .featured-video {
+            width: 100%;
+        }
+
+        .main-video-wrapper {
+            width: 100%;
+            position: relative;
         }
 
         .main-video-wrapper iframe {
-            height: 400px;
+            width: 100%;
+            height: 500px;
+            border-radius: 8px;
         }
-    }
 
-    @media (max-width: 768px) {
-        .main-video-wrapper iframe {
-            height: 300px;
+        .featured-title {
+            color: white;
+            font-size: 1.25rem;
         }
-    }
+
+        .featured-desc {
+            color: #999;
+        }
+
+        /* Custom scrollbar for video list */
+        .video-list::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .video-list::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .video-list::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 3px;
+        }
+
+        /* Responsive styles */
+        @media (max-width: 992px) {
+            .video-content-wrapper {
+                grid-template-columns: 1fr;
+            }
+
+            .video-list {
+                max-height: none;
+                overflow-y: visible;
+            }
+
+            .main-video-wrapper iframe {
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-video-wrapper iframe {
+                height: 300px;
+            }
+        }
     </style>
 @endpush
 @section('main_content')
@@ -241,24 +240,26 @@
             </div>
             <div class="row">
                 @foreach ($newscategories as $newscategory)
-                    <div class="col-sm-6 col-lg-4 col-xl-3">
-                        <div class="card maan-card-img">
-                            <a class="topcategories-thumb"
-                                href=" {{ route('categories.item', ['category_name' => $newscategory->name]) }} ">
+                    @if ($newscategory->post_counter != 0)
+                        <div class="col-sm-6 col-lg-4 col-xl-3">
+                            <div class="card maan-card-img">
+                                <a class="topcategories-thumb"
+                                    href=" {{ route('categories.item', ['category_name' => $newscategory->name]) }} ">
 
-                                <img loading="lazy" src="{{ asset($newscategory->image) }}"
-                                    alt="{{ $newscategory->name }}">
+                                    <img loading="lazy" src="{{ asset($newscategory->image) }}"
+                                        alt="{{ $newscategory->name }}">
 
-                            </a>
-                            <div class="card-body maan-card-body">
-                                <a href=" {{ route('categories.item', ['category_name' => $newscategory->name]) }} ">
-
-                                    <span>{{ $newscategory->name }}</span>
-                                    <span>{{ $newscategory->post_counter }} {{ __('Post') }}</span>
                                 </a>
+                                <div class="card-body maan-card-body">
+                                    <a href=" {{ route('categories.item', ['category_name' => $newscategory->name]) }} ">
+
+                                        <span>{{ $newscategory->name }}</span>
+                                        <span>{{ $newscategory->post_counter }} {{ __('Post') }}</span>
+                                    </a>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    @endif
                 @endforeach
 
             </div>
@@ -1132,131 +1133,62 @@
     @endif
     @endforeach
 
-   <!-- Featured video start -->
-<section class="news10-feature-video-section bg-dark py-4">
-    <div class="container-xxl container-lg">
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <div class="news10-sec-title">
-                <h3 class="text-white">{{ $page_data['headings']['feature_video_title'] ?? 'فيديو' }}</h3>
+    <!-- Featured video start -->
+    <section class="news10-feature-video-section bg-dark py-4">
+        <div class="container-xxl container-lg">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div class="news10-sec-title">
+                    <h3 class="text-white">{{ $page_data['headings']['feature_video_title'] ?? 'فيديو' }}</h3>
+                </div>
+                <a href="#" class="btn btn-success">المزيد</a>
             </div>
-            <a href="#" class="btn btn-success">المزيد</a>
-        </div>
 
-        <div class="video-content-wrapper">
-            <!-- Video list on the left -->
-            <div class="video-list">
-                @foreach ($latestVideoGalleries as $video)
-                    @if (!$loop->first)
-                        <div class="video-item">
-                            <div class="video-thumb">
-                                @if ($video->image)
-                                    <img loading="lazy" src="{{ asset($video->image) }}" alt="{{ $video->title }}">
-                                @else
-                                    <img loading="lazy" src="{{ asset('/maan/images/26.png') }}" alt="default thumbnail">
-                                @endif
-                                <a class="play-btn venobox vbox-item"
-                                    data-autoplay="true"
-                                    data-vbtype="video"
-                                    data-maxwidth="800px"
-                                    href="{{ asset($video->video) }}">
-                                    <i class="fas fa-play"></i>
-                                </a>
+            <div class="video-content-wrapper">
+                <!-- Video list on the left -->
+                <div class="video-list">
+                    @foreach ($latestVideoGalleries as $video)
+                        @if (!$loop->first)
+                            <div class="video-item">
+                                <div class="video-thumb">
+                                    @if ($video->image)
+                                        <img loading="lazy" src="{{ asset($video->image) }}"
+                                            alt="{{ $video->title }}">
+                                    @else
+                                        <img loading="lazy" src="{{ asset('/maan/images/26.png') }}"
+                                            alt="default thumbnail">
+                                    @endif
+                                    <a class="play-btn venobox vbox-item" data-autoplay="true" data-vbtype="video"
+                                        data-maxwidth="800px" href="{{ asset($video->video) }}">
+                                        <i class="fas fa-play"></i>
+                                    </a>
+                                </div>
+                                <div class="video-info">
+                                    <h4 class="video-title">{{ $video->title }}</h4>
+                                    <p class="video-desc">{{ Str::limit($video->description, 100) }}</p>
+                                </div>
                             </div>
-                            <div class="video-info">
-                                <h4 class="video-title">{{ $video->title }}</h4>
-                                <p class="video-desc">{{ Str::limit($video->description, 100) }}</p>
-                            </div>
+                        @endif
+                    @endforeach
+                </div>
+
+                <!-- Featured video on the right -->
+                <div class="featured-video">
+                    @if (isset($latestVideoGalleries[0]))
+                        <div class="main-video-wrapper">
+                            <iframe src="{{ asset($latestVideoGalleries[0]->video) }}" title="Featured video"
+                                frameborder="0" allow="autoplay 'none'" autoplay="0" autostart="0" allowfullscreen>
+                            </iframe>
+                            <h3 class="featured-title mt-3">{{ $latestVideoGalleries[0]->title }}</h3>
+                            <p class="featured-desc">{{ $latestVideoGalleries[0]->description }}</p>
                         </div>
                     @endif
-                @endforeach
-            </div>
-
-            <!-- Featured video on the right -->
-            <div class="featured-video">
-                @if(isset($latestVideoGalleries[0]))
-                    <div class="main-video-wrapper">
-                        <iframe src="{{ asset($latestVideoGalleries[0]->video) }}"
-                            title="Featured video"
-                            frameborder="0"
-                            allow="autoplay 'none'"
-                            autoplay="0"
-                            autostart="0"
-                            allowfullscreen>
-                        </iframe>
-                        <h3 class="featured-title mt-3">{{ $latestVideoGalleries[0]->title }}</h3>
-                        <p class="featured-desc">{{ $latestVideoGalleries[0]->description }}</p>
-                    </div>
-                @endif
-            </div>
-        </div>
-    </div>
-</section>
-
-
-    {{-- <!-- Maan Video News Start -->
-    <section class="maan-video-news-section maan-slide-section">
-        <div class="container">
-            <div class="maan-title justify-content-center">
-                <div class="maan-title-text">
-                    <h2><svg xmlns="http://www.w3.org/2000/svg" width="30.082" height="19.339" viewBox="0 0 30.082 19.339">
-                        <g id="video-camera" transform="translate(0 -85.333)">
-                            <g id="Group_1529" data-name="Group 1529" transform="translate(0 85.333)">
-                            <path id="Path_4265" data-name="Path 4265" d="M29.573,87.642a1.075,1.075,0,0,0-1.045-.047l-7.04,3.521V88.556a3.223,3.223,0,0,0-3.223-3.223H3.223A3.223,3.223,0,0,0,0,88.556v12.892a3.223,3.223,0,0,0,3.223,3.223H18.264a3.223,3.223,0,0,0,3.223-3.223V98.889l7.04,3.526a1.074,1.074,0,0,0,1.555-.967V88.556A1.074,1.074,0,0,0,29.573,87.642ZM10.744,99.3a4.3,4.3,0,1,1,4.3-4.3A4.3,4.3,0,0,1,10.744,99.3Z" transform="translate(0 -85.333)" fill="#ee0015"/>
-                            </g>
-                        </g>
-                        </svg>
-                    {{ __('Video News') }}</h2>
                 </div>
             </div>
-            <div class="row maan-card-slide">
-                @foreach ($latestVideoGalleries as $latestVideoGallery)
-                <div class="col-lg-6">
-                    <div class="card maan-default-post big-card">
-                        <div class="maan-post-img">
-                            <a class="venobox" data-autoplay="true" data-vbtype="video" href="{{asset($latestVideoGallery->video)}}">
-                                <svg viewBox="0 0 163.861 163.861"><path d="M34.857,3.613C20.084-4.861,8.107,2.081,8.107,19.106v125.637c0,17.042,11.977,23.975,26.75,15.509L144.67,97.275 c14.778-8.477,14.778-22.211,0-30.686L34.857,3.613z"/> </svg>
-                            </a>
-
-                        </div>
-                        <div class="card-body maan-card-body">
-                            <div class="maan-text">
-                                <h4><a href="#">{{$latestVideoGallery->title}}</a></h4>
-                                <ul>
-                                    <li>
-                                        <span class="maan-icon">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="12.007" height="13.414" viewBox="0 0 12.007 13.414">
-                                            <g  transform="translate(-24.165)">
-                                                <g   data-name="Group 466" transform="translate(26.687)">
-                                                <g   data-name="Group 465" transform="translate(0)">
-                                                    <path   data-name="Path 845" d="M114.274,0a3.483,3.483,0,1,0,3.483,3.483A3.492,3.492,0,0,0,114.274,0Z" transform="translate(-110.791)" fill="#888"/>
-                                                </g>
-                                                </g>
-                                                <g    data-name="Group 468" transform="translate(24.165 7.215)">
-                                                <g   data-name="Group 467" transform="translate(0)">
-                                                    <path   data-name="Path 846" d="M36.147,250.375a3.247,3.247,0,0,0-.35-.639,4.329,4.329,0,0,0-3-1.886.641.641,0,0,0-.441.106,3.712,3.712,0,0,1-4.38,0,.571.571,0,0,0-.441-.106,4.3,4.3,0,0,0-3,1.886,3.743,3.743,0,0,0-.35.639.323.323,0,0,0,.015.289,6.067,6.067,0,0,0,.411.608,5.778,5.778,0,0,0,.7.791,9.112,9.112,0,0,0,.7.608,6.936,6.936,0,0,0,8.274,0,6.685,6.685,0,0,0,.7-.608,7.021,7.021,0,0,0,.7-.791,5.329,5.329,0,0,0,.411-.608A.26.26,0,0,0,36.147,250.375Z" transform="translate(-24.165 -247.841)" fill="#888"/>
-                                                </g>
-                                                </g>
-                                            </g>
-                                            </svg>
-
-                                        </span>
-                                        <span class="maan-item-text"><a href="#">{{ $latestVideoGallery->user_name }}</a></span>
-                                    </li>
-                                    <li>
-                                        <span class="maan-icon"><svg viewBox="0 0 512 512"><path d="M347.216,301.211l-71.387-53.54V138.609c0-10.966-8.864-19.83-19.83-19.83c-10.966,0-19.83,8.864-19.83,19.83v118.978 c0,6.246,2.935,12.136,7.932,15.864l79.318,59.489c3.569,2.677,7.734,3.966,11.878,3.966c6.048,0,11.997-2.717,15.884-7.952 C357.766,320.208,355.981,307.775,347.216,301.211z"></path><path d="M256,0C114.833,0,0,114.833,0,256s114.833,256,256,256s256-114.833,256-256S397.167,0,256,0z M256,472.341 c-119.275,0-216.341-97.066-216.341-216.341S136.725,39.659,256,39.659c119.295,0,216.341,97.066,216.341,216.341 S375.275,472.341,256,472.341z"></path></svg></span>
-                                        <span class="maan-item-text">{{ (new \Illuminate\Support\Carbon($latestVideoGallery->create_at))->format('d M, Y') }}</span>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                @endforeach
-            </div>
-
         </div>
     </section>
-    <!-- Maan Video News End --> --}}
+
+
+
 
 
     <!-- Maan Don't Miss Start -->
@@ -1332,16 +1264,17 @@
             </div>
         </div>
     </section>
-    <!-- Add this script at the bottom of your page -->
-<script>
-    $(document).ready(function(){
-        $('.venobox').venobox({
-            spinner: 'wave',
-            spinColor: '#e94444',
-            titleattr: 'data-title',
-            numeratio: true,
-            infinigall: true
-        });
-    });
-</script>
 @endsection
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            $('.venobox').venobox({
+                spinner: 'wave',
+                spinColor: '#e94444',
+                titleattr: 'data-title',
+                numeratio: true,
+                infinigall: true
+            });
+        });
+    </script>
+@endpush
