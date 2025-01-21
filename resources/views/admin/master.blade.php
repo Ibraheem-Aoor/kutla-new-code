@@ -156,11 +156,11 @@
     <link rel="stylesheet" href="{{ asset('admin/plugins/sweetalert2/animate.min.css') }}"/>
     <script src="{{ asset('admin/plugins/sweetalert2/sweetalert2.all.min.js') }}" type="text/javascript"></script>
     <link rel="stylesheet" href="{{ asset('admin/plugins/sweetalert2/sweetalert2.min.css') }}">
-    <script src="{{ asset('admin/js/custom-sweetalert2.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('admin/js/custom-sweetalert2.js') }}?v=0.02" type="text/javascript"></script>
 
 @endif
 
-    <script src="{{ asset('admin/js/custom-ajax.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('admin/js/custom-ajax.js') }}?v=0.01" type="text/javascript"></script>
 {{-- Custom Js--}}
 <script src="{{ asset('admin/js/maan-custom.js') }}"></script>
 {{--demo js--}}

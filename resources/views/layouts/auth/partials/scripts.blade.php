@@ -2,7 +2,7 @@
 <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
 <script src="{{ asset('assets/js/toastr.min.js') }}"></script>
 {{-- jquery confirm --}}
-<script src="{{asset('assets/plugins/jquery-confirm/jquery-confirm.min.js')}}"></script>
+<script src="{{asset('assets/plugins/jquery-confirm/jquery-confirm.min.js')}}?v=0.02"></script>
 {{-- jquery validation --}}
 <script src="{{asset('assets/plugins/jquery-validation/jquery.validate.min.js')}}"></script>
 {{-- Custom --}}

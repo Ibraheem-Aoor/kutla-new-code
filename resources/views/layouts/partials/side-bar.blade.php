@@ -161,7 +161,7 @@
             </li>
             @endcanany
 
-            @canany(['repoters-read'])
+            {{-- @canany(['repoters-read'])
             <li
                 class="dropdown {{ Request::routeIs('admin.reporter') || Request::routeIs('admin.reporter.create') || Request::routeIs('admin.reporter.edit') ? 'active' : '' }}">
                 <a href="#"
@@ -182,7 +182,7 @@
                     @endcan
                 </ul>
             </li>
-            @endcanany
+            @endcanany --}}
             @can('contact-read')
             <li class="dropdown {{ Request::routeIs('admin.contact') ? 'active' : '' }}">
                 <a href="#" class="{{ Request::routeIs('admin.contact') ? 'active' : '' }}">
@@ -214,7 +214,7 @@
                     {{ __('CMS Manage') }}
                 </a>
                 <ul>
-                    @can('headers-read')
+                    {{-- @can('headers-read')
                     <li>
                         <a href="{{ route('admin.header.index') }}" class="{{ Request::routeIs('admin.header.index') ? 'active' : '' }}">
                             {{ __('Header') }}
@@ -227,7 +227,7 @@
                             {{ __('Footer') }}
                         </a>
                     </li>
-                    @endcan
+                    @endcan --}}
                     @can('manage-pages-read')
                     <li>
                         <a href="{{ route('admin.website-settings.index') }}" class="{{ Request::routeIs('admin.website-settings.index') ? 'active' : '' }}">
@@ -338,7 +338,6 @@
                         </a>
                     </li> --}}
                     <li class="new-added">
-                        <span class="badge badge-warning navbar-badge pulse-animation">{{ __('New') }}</span>
                         <a href="{{ route('admin.theme.color') }}"
                             class="{{ Request::routeIs('admin.theme.color') ? 'active' : '' }}">
                             {{ __('Theme Color') }}

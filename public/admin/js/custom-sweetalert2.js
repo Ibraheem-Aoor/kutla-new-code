@@ -41,13 +41,13 @@ function onSubmitDelete(any){
     var click = $(any);
     var id = click.attr("id");
     Swal.fire({
-        title: 'Are you sure?',
-        text: "You won't be able to revert this!",
+        title: "{{ __('Are You Sure?') }}",
+        text: "{{ __('You won't be able to revert this!') }}",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!',
+        confirmButtonText: "{{ __('Yes, Delete It!') }}",
         onOpen: function() {
             var maanlms = document.getElementById("myAudio");
             maanlms.play();

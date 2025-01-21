@@ -14,7 +14,7 @@ $(document).on('click', '.confirm-action', function (event) {
     let icon = $(this).data('icon') ?? 'fas fa-warning';
 
     $.confirm({
-        title: "Are you sure?",
+        title: "هل أنت متأكد؟",
         icon: icon,
         theme: 'modern',
         closeIcon: true,
@@ -25,6 +25,7 @@ $(document).on('click', '.confirm-action', function (event) {
         buttons: {
             confirm: {
                 btnClass: 'btn-red',
+                title:"asdasd",
                 action: function () {
                     event.preventDefault();
                     $.ajax({

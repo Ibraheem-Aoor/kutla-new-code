@@ -9,10 +9,10 @@
 <script src="{{ asset('assets/plugins/custom/notification.js') }}"></script>
 <script src="{{ asset('assets/plugins/validation-setup/validation-setup.js') }}"></script>
 <script src="{{ asset('assets/js/toastr.min.js') }}"></script>
-<script src="{{ asset('assets/plugins/jquery-confirm/jquery-confirm.min.js')}}"></script>
+<script src="{{ asset('assets/plugins/jquery-confirm/jquery-confirm.min.js')}}?v=0.02"></script>
 <script src="{{ asset('assets/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
 <script src="{{ asset('assets/plugins/custom/form.js') }}"></script>
-<script src="{{ asset('assets/js/custom-ajax.js') }}"></script>
+<script src="{{ asset('assets/js/custom-ajax.js') }}?v=0.01"></script>
 
 @stack('js')
 
