@@ -1193,7 +1193,7 @@
 
 
     <!-- Maan Don't Miss Start -->
-    <section class="maan-don-t-miss-section">
+    <section class="maan-don-t-miss-section mt-5">
         <div class="container">
             <div class="maan-title">
 
