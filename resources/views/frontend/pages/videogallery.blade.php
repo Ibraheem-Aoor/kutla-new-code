@@ -1,5 +1,40 @@
 @extends('frontend.master')
+@push('styles')
+    <style>
+        .hover-shadow {
+            transition: all 0.3s ease;
+        }
 
+        .hover-shadow:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+        }
+
+        .object-fit-cover {
+            object-fit: cover;
+        }
+
+        .page-link {
+            padding: 0.75rem 1rem;
+            margin: 0 0.25rem;
+            border-radius: 8px !important;
+            transition: all 0.3s ease;
+        }
+
+        .page-link:focus {
+            box-shadow: 0 0 0 0.25rem rgba(40, 167, 69, 0.25);
+        }
+
+        .hover-green:hover {
+            background-color: #28a745;
+            color: white !important;
+        }
+
+        .page-item.disabled .page-link {
+            color: #6c757d;
+        }
+    </style>
+@endpush
 @section('main_content')
     <!-- Breadcrumb -->
     <nav aria-label="breadcrumb" class="py-3 bg-light">
@@ -38,17 +73,15 @@
                             <!-- Video Thumbnail -->
                             <div class="position-relative">
                                 <img loading="lazy"
-                                     src="{{ $video->image ? asset($video->image) : asset('/maan/images/26.png') }}"
-                                     alt="{{ $video->title }}"
-                                     class="card-img-top object-fit-cover"
-                                     style="height: 240px;">
+                                    src="{{ $video->image ? asset($video->image) : asset('/maan/images/26.png') }}"
+                                    alt="{{ $video->title }}" class="card-img-top object-fit-cover" style="height: 240px;">
 
 
 
                                 <!-- Play Button -->
-                                <a class="position-absolute top-50 start-50 translate-middle my-video-gallery" data-autoplay="true" data-vbtype="video"
-                                        data-gall="myvidgallery" href="{{ $video->video }}" data-href="{{ $video->video }}"
-                                   >
+                                <a class="position-absolute top-50 start-50 translate-middle my-video-gallery"
+                                    data-autoplay="true" data-vbtype="video" data-gall="myvidgallery"
+                                    href="{{ $video->video }}" data-href="{{ $video->video }}">
 
                                     <div class="btn btn-light rounded-circle p-3">
                                         <i class="fas fa-play fs-4"></i>
@@ -73,28 +106,61 @@
                 <div class="col-12">
                     <nav aria-label="Page navigation">
                         <div class="d-flex justify-content-center">
-                            {{ $videos->links('pagination::bootstrap-4') }}
+                            @if ($videos->hasPages())
+                                <ul class="pagination pagination-lg">
+                                    {{-- Previous Page Link --}}
+                                    @if ($videos->onFirstPage())
+                                        <li class="page-item disabled">
+                                            <span class="page-link border-0 bg-transparent">
+                                                <i class="fas fa-chevron-left"></i>
+                                            </span>
+                                        </li>
+                                    @else
+                                        <li class="page-item">
+                                            <a class="page-link border-0 text-success"
+                                                href="{{ $videos->previousPageUrl() }}" rel="prev">
+                                                <i class="fas fa-chevron-left"></i>
+                                            </a>
+                                        </li>
+                                    @endif
+
+                                    {{-- Pagination Elements --}}
+                                    @foreach ($videos->getUrlRange(1, $videos->lastPage()) as $page => $url)
+                                        @if ($page == $videos->currentPage())
+                                            <li class="page-item active">
+                                                <span class="page-link border-0 bg-success">{{ $page }}</span>
+                                            </li>
+                                        @else
+                                            <li class="page-item">
+                                                <a class="page-link border-0 text-success hover-green"
+                                                    href="{{ $url }}">{{ $page }}</a>
+                                            </li>
+                                        @endif
+                                    @endforeach
+
+                                    {{-- Next Page Link --}}
+                                    @if ($videos->hasMorePages())
+                                        <li class="page-item">
+                                            <a class="page-link border-0 text-success" href="{{ $videos->nextPageUrl() }}"
+                                                rel="next">
+                                                <i class="fas fa-chevron-right"></i>
+                                            </a>
+                                        </li>
+                                    @else
+                                        <li class="page-item disabled">
+                                            <span class="page-link border-0 bg-transparent">
+                                                <i class="fas fa-chevron-right"></i>
+                                            </span>
+                                        </li>
+                                    @endif
+                                </ul>
+                            @endif
                         </div>
                     </nav>
                 </div>
             </div>
         </div>
     </section>
-
-    @push('styles')
-    <style>
-        .hover-shadow {
-            transition: all 0.3s ease;
-        }
-        .hover-shadow:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
-        }
-        .object-fit-cover {
-            object-fit: cover;
-        }
-    </style>
-    @endpush
 @endsection
 
 
