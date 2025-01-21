@@ -1158,7 +1158,7 @@
                                             alt="default thumbnail">
                                     @endif
                                     <a class="play-btn   my-video-gallery" data-autoplay="true" data-vbtype="video"
-                                        data-gall="myvidgallery" href="{{ asset($video->video) }}">
+                                        data-gall="myvidgallery" href="{{ ($video->video) }}">
                                         <i class="fas fa-play"></i>
                                     </a>
 
