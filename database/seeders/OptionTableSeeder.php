@@ -20,14 +20,14 @@ class OptionTableSeeder extends Seeder
                     'key' => 'manage-pages',
                     'value' => '{
                         "headings": {
-                            "top_category_title": "الفئات الأعلى",
+                            "top_category_title": "التصنيفات الرئيسية",
                             "most_popular_title": "الأكثر مشاهدة",
                             "stay_connected_title": "ابق على تواصل",
                             "follower_text_one": "متابع فيسبوك",
                             "follower_text_two": "متابع انستغرام",
                             "follower_text_three": "متابع تويتر",
                             "follower_text_four": "متابع يوتيوب",
-                            "title_text": "لا تفوت",
+                            "title_text": "أحدث الالبومات",
                             "breaking_news_title": "أخبار عاجلة",
                             "trending_news_title": "الأخبار الرائجة",
                             "weekly_reviews": "المراجعة الأسبوعية",
