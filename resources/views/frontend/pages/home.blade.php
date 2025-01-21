@@ -1140,7 +1140,7 @@
                 <div class="news10-sec-title">
                     <h3 class="text-white">{{ $page_data['headings']['feature_video_title'] ?? 'فيديو' }}</h3>
                 </div>
-                <a href="#" class="btn btn-success">المزيد</a>
+                <a href="{{ route('videos') }}" class="btn btn-success">المزيد</a>
             </div>
 
             <div class="video-content-wrapper">
