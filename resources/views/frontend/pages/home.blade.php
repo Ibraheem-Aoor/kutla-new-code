@@ -2,6 +2,145 @@
 @section('meta_content')
     @include('frontend.pages.meta')
 @endsection
+@push('styles')
+
+<style>
+    .video-content-wrapper {
+        display: grid;
+        grid-template-columns: 350px 1fr;
+        gap: 2rem;
+        direction: rtl;
+    }
+
+    .video-list {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        max-height: 600px;
+        overflow-y: auto;
+    }
+
+    .video-item {
+        display: flex;
+        gap: 1rem;
+        background: rgba(255, 255, 255, 0.05);
+        padding: 0.75rem;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .video-item:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .video-thumb {
+        position: relative;
+        width: 120px;
+        height: 80px;
+        flex-shrink: 0;
+    }
+
+    .video-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+    .play-btn {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 30px;
+        height: 30px;
+        background: rgba(0, 0, 0, 0.7);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 0.8rem;
+    }
+
+    .video-info {
+        flex-grow: 1;
+    }
+
+    .video-title {
+        color: white;
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .video-desc {
+        color: #999;
+        font-size: 0.875rem;
+        margin: 0;
+    }
+
+    .featured-video {
+        width: 100%;
+    }
+
+    .main-video-wrapper {
+        width: 100%;
+        position: relative;
+    }
+
+    .main-video-wrapper iframe {
+        width: 100%;
+        height: 500px;
+        border-radius: 8px;
+    }
+
+    .featured-title {
+        color: white;
+        font-size: 1.25rem;
+    }
+
+    .featured-desc {
+        color: #999;
+    }
+
+    /* Custom scrollbar for video list */
+    .video-list::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .video-list::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .video-list::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 3px;
+    }
+
+    /* Responsive styles */
+    @media (max-width: 992px) {
+        .video-content-wrapper {
+            grid-template-columns: 1fr;
+        }
+
+        .video-list {
+            max-height: none;
+            overflow-y: visible;
+        }
+
+        .main-video-wrapper iframe {
+            height: 400px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .main-video-wrapper iframe {
+            height: 300px;
+        }
+    }
+    </style>
+@endpush
 @section('main_content')
     <!-- Maan Top News Start -->
     <section class="maan-top-news-section">
@@ -993,49 +1132,65 @@
     @endif
     @endforeach
 
-    <!-- Featured video  start -->
-    <section class="news10-feature-video-section">
-        {{-- <div class="top-bg">
-                <img loading="lazy" src="{{ asset('/maan/images/feature-video-bg.svg') }}" alt="">
-            </div> --}}
-        <div class="container-xxl container-lg">
+   <!-- Featured video start -->
+<section class="news10-feature-video-section bg-dark py-4">
+    <div class="container-xxl container-lg">
+        <div class="d-flex justify-content-between align-items-center mb-4">
             <div class="news10-sec-title">
-                <h3>{{ $page_data['headings']['feature_video_title'] ?? '' }}</h3>
+                <h3 class="text-white">{{ $page_data['headings']['feature_video_title'] ?? 'فيديو' }}</h3>
             </div>
-            <div class="video-section-grid">
+            <a href="#" class="btn btn-success">المزيد</a>
+        </div>
+
+        <div class="video-content-wrapper">
+            <!-- Video list on the left -->
+            <div class="video-list">
                 @foreach ($latestVideoGalleries as $video)
-                    @if ($loop->iteration == 1)
-                        <div class="card iframe-video-wrapper p-2">
-                            <iframe src="{{ asset($video->video) }}" title="YouTube video player" frameborder="0"
-                                class="w-50 m-auto" allow="autoplay 'none'" autoplay="0" autostart="0"
-                                allowfullscreen></iframe>
+                    @if (!$loop->first)
+                        <div class="video-item">
+                            <div class="video-thumb">
+                                @if ($video->image)
+                                    <img loading="lazy" src="{{ asset($video->image) }}" alt="{{ $video->title }}">
+                                @else
+                                    <img loading="lazy" src="{{ asset('/maan/images/26.png') }}" alt="default thumbnail">
+                                @endif
+                                <a class="play-btn venobox vbox-item"
+                                    data-autoplay="true"
+                                    data-vbtype="video"
+                                    data-maxwidth="800px"
+                                    href="{{ asset($video->video) }}">
+                                    <i class="fas fa-play"></i>
+                                </a>
+                            </div>
+                            <div class="video-info">
+                                <h4 class="video-title">{{ $video->title }}</h4>
+                                <p class="video-desc">{{ Str::limit($video->description, 100) }}</p>
+                            </div>
                         </div>
                     @endif
-
-                    <div class="card trending-news-card weekly-review-card  text-start m-auto mb-2 mt-2">
-                        <div class="card-thumb">
-                            @if ($video->image != null)
-                                <img loading="lazy" src="{{ asset($video->image) }}" alt="">
-                            @else
-                                <img loading="lazy" src="{{ asset('/maan/images/26.png') }}" alt="">
-                            @endif
-                            <a href="" class="news-ctg-link">{{ $video->title }}</a>
-
-                            <!-- Modified video link -->
-                            <a class="venobox vbox-item" data-autoplay="true" data-vbtype="video" data-maxwidth="800px"
-                                href="{{ asset($video->video) }}" data-title="{{ $video->title }}">
-                                <i class="fas fa-play"></i>
-                            </a>
-                        </div>
-                        <div class="card-body">
-                            <a href="" class="news-title p-2">{{ $video->description }}</a>
-                        </div>
-                    </div>
                 @endforeach
             </div>
+
+            <!-- Featured video on the right -->
+            <div class="featured-video">
+                @if(isset($latestVideoGalleries[0]))
+                    <div class="main-video-wrapper">
+                        <iframe src="{{ asset($latestVideoGalleries[0]->video) }}"
+                            title="Featured video"
+                            frameborder="0"
+                            allow="autoplay 'none'"
+                            autoplay="0"
+                            autostart="0"
+                            allowfullscreen>
+                        </iframe>
+                        <h3 class="featured-title mt-3">{{ $latestVideoGalleries[0]->title }}</h3>
+                        <p class="featured-desc">{{ $latestVideoGalleries[0]->description }}</p>
+                    </div>
+                @endif
+            </div>
         </div>
-    </section>
-    <!-- Featured video  end -->
+    </div>
+</section>
 
 
     {{-- <!-- Maan Video News Start -->
