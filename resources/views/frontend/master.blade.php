@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="{{ app()->getLocale() == 'ar' ? 'rtl' : 'ltr' }}">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" dir="rtl">
 
 <head>
     @php
@@ -58,11 +58,9 @@
     <link rel="stylesheet" href="{{ asset('frontend/css/color-change.css') }}">
 
     @stack('styles')
-
-    @if (app()->getLocale() == 'ar')
-        <link rel="stylesheet" href="{{ asset('assets/css/arabic.css') }}">
-        <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.rtl.min.css') }}">
-    @endif
+    {{-- Arabic --}}
+    <link rel="stylesheet" href="{{ asset('assets/css/arabic.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.rtl.min.css') }}">
 
     @if ($googleanalytics)
         <!-- Global site tag (gtag.js) - Google Analytics -->

@@ -13,7 +13,7 @@
 
         <div class="header-middle"></div>
         <div class="header-right">
-            <div class="language-change">
+            <div class="language-change d-none">
                 <div class="dropdown">
                     <button class="btn btn-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <img src="{{ asset('flags/' . languages()[app()->getLocale()]['flag'] . '.svg') }}" alt="" class="flag-icon me-2">
