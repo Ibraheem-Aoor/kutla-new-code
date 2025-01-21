@@ -45,7 +45,7 @@
     <!-- Slick -->
     <link rel="stylesheet" href="{{ asset('frontend/css/slick.css') }}">
     <!-- Venobox -->
-    <link rel="stylesheet" href="{{ asset('frontend/css/venobox.min.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/venobox/2.1.8/venobox.min.css" integrity="sha512-GypU0XXzM1fTasrwwQdNWacbV5aRsbJCjDdxfRyiYwDMvFkAI1LMny6mDbrM19kKGMCA+dQpilQgRZoPjhsGfg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Style -->
     <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}?v=0.03">
     <!-- Responsive -->
@@ -162,7 +162,7 @@
     <!-- Waypoints -->
     <script src="{{ asset('frontend/js/vendor/waypoints.min.js') }} "></script>
     <!-- Venobox -->
-    <script src="{{ asset('frontend/js/vendor/venobox.min.js') }} "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/venobox/2.1.8/venobox.min.js" integrity="sha512-LvcjoBF1sjBfiAJpi1Vt5pJXcT7A+0BK6nvwYkp0PwL3zNswVsRi3GURZXlRN8o6E9p0pJUJi5vsp6LSqVBzhw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <!-- Index -->
 
     <script src="{{ asset('frontend/js/index.js') }}?v=0.02"></script>
