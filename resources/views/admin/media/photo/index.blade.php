@@ -143,7 +143,7 @@
             // Listen for the modal show event
             editModal.addEventListener('shown.bs.modal', function(e) {
                 const inputElement = editModal.querySelector(
-                'input[type="file"].filepond'); // File input inside modal
+                    'input[type="file"].filepond'); // File input inside modal
 
                 // Destroy the existing FilePond instance if it exists
                 if (pond) {
@@ -177,21 +177,64 @@
                                         id: source,
                                     }) // Pass image ID for deletion
                                 })
-                                .then(response => console.log(response.json())
-                                )
+                                .then(response => console.log(response.json()))
                                 .then(load)
                                 .catch(error);
                         }
                     }
                 });
+                FilePond.registerPlugin(FilePondPluginImagePreview);
+
 
                 // Populate FilePond with preloaded images (without uploading)
                 const galleryData = JSON.parse(e.relatedTarget.dataset.gallery || '[]');
                 pond.removeFiles(); // Clear any existing files
-
-                galleryData.forEach(image => {
-                    // Add the preloaded file without uploading it again
-                    pond.addFile(image.options.source , {type:'local' , imagePreview: true});
+                const files = galleryData.map(image => ({
+                    source: image.options.source, // Full URL of the image
+                    options: {
+                        type: 'local', // Mark as a local file
+                        metadata: {
+                            poster: image.options.source, // Ensure preview is shown
+                        },
+                        status: 2
+                    },
+                }));
+                console.log(files);
+                // Set the FilePond options dynamically
+                pond.setOptions({
+                    allowImagePreview: true, // Ensure previews are enabled
+                    server: {
+                        process: {
+                            url: "{{ route('admin.filepond.process') }}",
+                            method: 'POST',
+                            headers: {
+                                'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                            }
+                        },
+                        remove: (source, load, error, options) => {
+                            // AJAX request to delete the image
+                            fetch("{{ route('admin.filepond.remove') }}", {
+                                    method: 'DELETE',
+                                    headers: {
+                                        'Content-Type': 'application/json',
+                                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                                    },
+                                    body: JSON.stringify({
+                                        id: source,
+                                    }) // Pass image ID for deletion
+                                })
+                                .then(response => console.log(response.json()))
+                                .then(load)
+                                .catch(error);
+                        },
+                        load: (source, load) => {
+                            // Use fetch to load the image as a blob
+                            fetch(source)
+                                .then(res => res.blob())
+                                .then(load);
+                        },
+                    },
+                    files: files, // Preload images
                 });
             });
 
