@@ -125,7 +125,7 @@
             </li>
             @endcanany
 
-            @canany(['blogs-read', 'blog-categories-read', 'blog-sub-categories-read'])
+            {{-- @canany(['blogs-read', 'blog-categories-read', 'blog-sub-categories-read'])
                 <li
                 class="dropdown {{ Request::routeIs('admin.blog.category') || Request::routeIs('admin.blog.subcategory') || Request::routeIs('admin.blog') || Request::routeIs('admin.blog.create') || Request::routeIs('admin.blog.edit') ? 'active' : '' }}">
                 <a href="#"
@@ -159,7 +159,7 @@
                     @endcan
                 </ul>
             </li>
-            @endcanany
+            @endcanany --}}
 
             {{-- @canany(['repoters-read'])
             <li
