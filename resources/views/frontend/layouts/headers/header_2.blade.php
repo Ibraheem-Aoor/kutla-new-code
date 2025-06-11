@@ -40,7 +40,7 @@
                 <div class="col-md-4 text-right">
                     <ul>
                         @foreach (socials() as $social)
-                            <li><a href="{{ $social->url }}"><i class="{{ $social->icon_code }}"></i></a></li>
+                            <li><a href="{{ $social->url }}" target="_blank"><i class="{{ $social->icon_code }}"></i></a></li>
                         @endforeach
                     </ul>
                 </div>
