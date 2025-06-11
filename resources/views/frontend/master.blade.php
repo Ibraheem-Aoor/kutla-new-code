@@ -47,7 +47,7 @@
     <!-- Venobox -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/venobox/2.1.8/venobox.min.css" integrity="sha512-GypU0XXzM1fTasrwwQdNWacbV5aRsbJCjDdxfRyiYwDMvFkAI1LMny6mDbrM19kKGMCA+dQpilQgRZoPjhsGfg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- Style -->
-    <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}?v=0.03">
+    <link rel="stylesheet" href="{{ asset('frontend/css/style.css') }}?v=0.04">
     <!-- Responsive -->
     <link rel="stylesheet" href="{{ asset('frontend/css/responsive.css') }}">
     <!-- toastr -->
