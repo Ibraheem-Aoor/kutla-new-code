@@ -236,10 +236,7 @@
                         <div class="card news10-topnews-card maantop-news-card">
                             @if ($advertisement)
                                 {!! $advertisement->sidebar_ads !!}
-                            @else
-                                <a href="#" class="new-card-thumb">
-                                    <img loading="lazy" src="{{ asset($image[0] ?? null) }}" alt="">
-                                </a>
+                          
                             @endif
                         </div>
                     </div>
