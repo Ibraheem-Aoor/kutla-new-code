@@ -142,7 +142,7 @@
 @endpush
 @section('main_content')
     <!-- Maan Top News Start -->
-    <section class="maan-top-news-section">
+    <section class="maan-top-news-section pt-5">
         <div class="container">
             <div class="row">
                 @foreach ($latestnews->take(3) as $lastnews)
@@ -790,8 +790,8 @@
 
                         @isset($socials[1])
                             <div class="col-sm-6">
-                                <div class="follower-btn maan-twitter">
-                                    <a href="{{ $socials[1]->url }}">
+                                <div class="follower-btn maan-twitter" >
+                                    <a href="{{ $socials[1]->url }}" target="_blank">
                                         <div class="maan-icon">
                                             <svg viewBox="0 0 512 512">
                                                 <path
