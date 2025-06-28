@@ -69,6 +69,7 @@
                                 <th>{{ __('Summary') }}</th>
                                 <th>{{ __('Publish Status') }}</th>
                                 <th>{{ __('Breaking news') }}</th>
+                                <th>{{ __('Is In Home') }}</th>
                                 <th class="maanaction">{{ __('Action') }}</th>
                             </tr>
                         </thead>

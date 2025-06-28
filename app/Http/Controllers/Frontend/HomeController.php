@@ -35,29 +35,54 @@ class HomeController extends Controller
             ->join('users', 'news.reporter_id', '=', 'users.id')
             ->select('news.id', 'news.title', 'news.image', 'news.date', 'news.created_at', 'newssubcategories.name as news_subcategory', 'newscategories.name as news_category', 'newscategories.slug as news_categoryslug', DB::raw("CONCAT(users.first_name,' ',users.last_name) AS reporter_name"))
             ->where('news.status', 1)
+            ->where('news.is_in_home', 1)
             ->latest()
             ->take(5)
             ->get();
+        if ($latestnews->isEmpty()) {
+            $latestnews = News::join('newssubcategories', 'news.subcategory_id', '=', 'newssubcategories.id')
+                ->join('newscategories', 'newssubcategories.category_id', '=', 'newscategories.id')
+                ->join('users', 'news.reporter_id', '=', 'users.id')
+                ->select('news.id', 'news.title', 'news.image', 'news.date', 'news.created_at', 'newssubcategories.name as news_subcategory', 'newscategories.name as news_category', 'newscategories.slug as news_categoryslug', DB::raw("CONCAT(users.first_name,' ',users.last_name) AS reporter_name"))
+                ->where('news.status', 1)
+                ->latest()
+                ->take(5)
+                ->get();
+        }
+        if ($latestnews->count() < 3) {
+            $additionalNews = News::join('newssubcategories', 'news.subcategory_id', '=', 'newssubcategories.id')
+                ->join('newscategories', 'newssubcategories.category_id', '=', 'newscategories.id')
+                ->join('users', 'news.reporter_id', '=', 'users.id')
+                ->select('news.id', 'news.title', 'news.image', 'news.date', 'news.created_at', 'newssubcategories.name as news_subcategory', 'newscategories.name as news_category', 'newscategories.slug as news_categoryslug', DB::raw("CONCAT(users.first_name,' ',users.last_name) AS reporter_name"))
+                ->where('news.status', 1)
+                ->whereNotIn('news.id', $latestnews->pluck('id'))
+                ->latest()
+                ->take(3 - $latestnews->count())
+                ->get();
+
+            $latestnews = $latestnews->merge($additionalNews);
+        }
+
 
         $newscategories = Newscategory::with('news.reporter:id,first_name,last_name')->whereNotIn('type', ['home', 'contact'])->orderByDesc('post_counter')->get()->map(function ($q) {
             $qa = $q->news->take(6);
 
-            $qa->id     = $q->id;
-            $qa->name   = $q->name;
-            $qa->slug   = $q->slug;
-            $qa->image  = $q->image;
+            $qa->id = $q->id;
+            $qa->name = $q->name;
+            $qa->slug = $q->slug;
+            $qa->image = $q->image;
             $qa->post_counter = $q->post_counter;
-            $qa->news    = $qa;
+            $qa->news = $qa;
             return $qa;
         });
 
         $popularnewscategories = Newscategory::with('popularNews.reporter:id,first_name,last_name')->whereNotIn('type', ['home', 'contact'])->orderByDesc('post_counter')->take(6)->get()->map(function ($q) {
             $qa = $q->popularNews->take(4);
 
-            $qa->id     = $q->id;
-            $qa->name   = $q->name;
-            $qa->slug    = $q->slug;
-            $qa->news    = $qa;
+            $qa->id = $q->id;
+            $qa->name = $q->name;
+            $qa->slug = $q->slug;
+            $qa->news = $qa;
             return $qa;
         });
 
@@ -87,10 +112,10 @@ class HomeController extends Controller
         })
             ->take(10)
             ->get();
-        $features      = News::where('status', 1)->orderBy('viewers', 'DESC')->take(6)->get();
+        $features = News::where('status', 1)->orderBy('viewers', 'DESC')->take(6)->get();
 
         $this->sitemap();
-        $themeActivation =  themeActivation();
+        $themeActivation = themeActivation();
         //return request()->getRequestUri();
         return view(Route::currentRouteName() == 'home-one' ? 'frontend.pages.home' : (Route::currentRouteName() == 'home-two' ? 'frontend.pages.home_2' : ($themeActivation->page_slug == 'home_1' ? 'frontend.pages.home' : 'frontend.pages.' . $themeActivation->page_slug)), compact('page_data', 'company', 'latestnews', 'newscategories', 'popularnewscategories', 'popularsnews', 'latestphotogalleries', 'latestVideoGalleries', 'latestReviewNews', 'features'));
     }
@@ -259,27 +284,27 @@ class HomeController extends Controller
         })
             ->take(10)
             ->get();
-        $features      = News::where('status', 1)->orderBy('viewers', 'DESC')->take(6)->get();
+        $features = News::where('status', 1)->orderBy('viewers', 'DESC')->take(6)->get();
 
         $this->sitemap();
-        $themeActivation =  themeActivation();
+        $themeActivation = themeActivation();
         //return request()->getRequestUri();
         return view(Route::currentRouteName() == 'home-one' ? 'frontend.pages.home' : (Route::currentRouteName() == 'home-two' ? 'frontend.pages.home_2' : ($themeActivation->page_slug == 'home_1' ? 'frontend.pages.home' : 'frontend.pages.' . $themeActivation->page_slug)), compact('latestnews', 'newscategories', 'popularsnews', 'popularsnewsall', 'popularsnewsworld', 'popularsnewslifestyle', 'popularsnewsentertainment', 'popularsnewssports', 'popularsnewstechnology', 'latestnewsnational', 'latestnewsworld', 'latestnewspolitics', 'latestnewslifestyle', 'latestphotogalleries', 'latestnewsentertainment', 'latestnewssports', 'latestnewstechnology', 'latestnewsbusiness', 'latestVideoGalleries', 'latestReviewNews', 'features'));
     }
     public function maanIndex2()
     {
 
-        $news          = News::where('status', 1)->latest()->take(5)->get();
-        $trending      = News::where('status', 1)->orderBy('viewers', 'DESC')->take(4)->get();
-        $adds          = Advertisement::latest()->take(1)->get();
-        $sports        = News::where('subcategory_id', 1)->latest()->take(4)->get();
-        $reviews       = News::where('status', 1)->orderBy('viewers', 'DESC')->take(10)->get();
-        $economies     = News::where('status', 1)->where('subcategory_id', 3)->latest()->take(4)->get();
-        $editors       = News::where('status', 1)->orderBy('viewers', 'ASC')->take(5)->get();
-        $features      = News::where('status', 1)->orderBy('viewers', 'DESC')->take(5)->get();
-        $slides        = News::where('status', 1)->orderBy('viewers', 'DESC')->take(10)->get();
-        $videos        = Videogallery::latest()->take(4)->get();
-        $categories    = Newscategory::whereNotIn('type', ['home', 'contact'])->latest()->get();
+        $news = News::where('status', 1)->latest()->take(5)->get();
+        $trending = News::where('status', 1)->orderBy('viewers', 'DESC')->take(4)->get();
+        $adds = Advertisement::latest()->take(1)->get();
+        $sports = News::where('subcategory_id', 1)->latest()->take(4)->get();
+        $reviews = News::where('status', 1)->orderBy('viewers', 'DESC')->take(10)->get();
+        $economies = News::where('status', 1)->where('subcategory_id', 3)->latest()->take(4)->get();
+        $editors = News::where('status', 1)->orderBy('viewers', 'ASC')->take(5)->get();
+        $features = News::where('status', 1)->orderBy('viewers', 'DESC')->take(5)->get();
+        $slides = News::where('status', 1)->orderBy('viewers', 'DESC')->take(10)->get();
+        $videos = Videogallery::latest()->take(4)->get();
+        $categories = Newscategory::whereNotIn('type', ['home', 'contact'])->latest()->get();
         $d = array();
         foreach ($categories as $category) {
             $data['cat_id'] = $category->id;
@@ -287,7 +312,7 @@ class HomeController extends Controller
             $data['slug'] = $category->slug;
             $data['type'] = $category->type;
             $data['image'] = $category->image;
-            $data['news']  = News::join('newssubcategories', 'news.subcategory_id', '=', 'newssubcategories.id')
+            $data['news'] = News::join('newssubcategories', 'news.subcategory_id', '=', 'newssubcategories.id')
                 ->join('newscategories', 'newssubcategories.category_id', '=', 'newscategories.id')
                 ->select('news.id', 'news.title', 'news.image', 'news.date', 'news.created_at', 'newscategories.name as news_category', 'newscategories.slug as news_categoryslug')
                 ->where('newssubcategories.category_id', $category->id)
@@ -298,7 +323,7 @@ class HomeController extends Controller
         }
         $wholecategories = $d;
         //return $wholecategories;
-        $newscategory  = DB::table('newscategories')
+        $newscategory = DB::table('newscategories')
             ->join('newssubcategories', 'newscategories.id', '=', 'newssubcategories.category_id')
             ->join('news', 'newssubcategories.category_id', '=', 'news.subcategory_id')
             ->get()->take(4);
@@ -354,10 +379,11 @@ class HomeController extends Controller
             ->get();
 
         foreach ($latestnews as $news) {
-            $sitemap->add(Url::create(strtolower($news->news_category))
-                ->setLastModificationDate($news->created_at)
-                ->setChangeFrequency('daily')
-                ->setPriority(1.0)
+            $sitemap->add(
+                Url::create(strtolower($news->news_category))
+                    ->setLastModificationDate($news->created_at)
+                    ->setChangeFrequency('daily')
+                    ->setPriority(1.0)
             );
         }
 

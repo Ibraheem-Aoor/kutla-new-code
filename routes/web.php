@@ -239,6 +239,7 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->name('admin.')->group(fun
         Route::get('/news', [NewsController::class, 'maanNewsIndex'])->name('news');
         Route::post('news/filter', [NewsController::class, 'acnooFilter'])->name('news.filter');
         Route::post('news/status/{id}', [NewsController::class, 'status'])->name('news.status');
+        Route::post('news/is-in-home/{id}', [NewsController::class, 'updateIsInHome'])->name('news.in_home');
         Route::post('news/breaking/status/{id}', [NewsController::class, 'breakingStatus'])->name('breaking.news');
 
         //Route news create

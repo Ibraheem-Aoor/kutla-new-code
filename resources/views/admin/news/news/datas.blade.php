@@ -39,6 +39,12 @@
                 <span class="slider round"></span>
             </label>
         </td>
+        <td class="text-center">
+            <label class="switch">
+                <input type="checkbox" {{ $news->is_in_home == 1 ? 'checked' : '' }} class="status" data-url="{{ route('admin.news.in_home',$news->id) }}">
+                <span class="slider round"></span>
+            </label>
+        </td>
 
         <td class="print-d-none">
             <div class="dropdown table-action">
