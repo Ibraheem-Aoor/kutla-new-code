@@ -218,7 +218,7 @@
                                                         d="M256,0C114.833,0,0,114.833,0,256s114.833,256,256,256s256-114.833,256-256S397.167,0,256,0z M256,472.341 c-119.275,0-216.341-97.066-216.341-216.341S136.725,39.659,256,39.659c119.295,0,216.341,97.066,216.341,216.341 S375.275,472.341,256,472.341z" />
                                                 </svg></span>
                                             <span
-                                                class="maan-item-text">{{ (new \Illuminate\Support\Carbon($lastnews->date))->format('d M, Y') }}</span>
+                                                class="maan-item-text">{{ (new \Illuminate\Support\Carbon($lastnews->date))->translatedFormat('d M, Y') }}</span>
                                         </li>
                                     </ul>
                                 </div>
@@ -345,7 +345,7 @@
                                                         </path>
                                                     </svg></span>
                                                 <span
-                                                    class="maan-item-text">{{ (new \Illuminate\Support\Carbon($popularnews->date))->format('d M, Y') }}</span>
+                                                    class="maan-item-text">{{ (new \Illuminate\Support\Carbon($popularnews->date))->translatedFormat('d M, Y') }}</span>
                                             </li>
                                         </ul>
                                     </div>
@@ -456,7 +456,7 @@
                                                                                 </path>
                                                                             </svg></span>
                                                                         <span
-                                                                            class="maan-item-text">{{ (new \Illuminate\Support\Carbon($popularnewsall->date))->format('d M, Y') }}</span>
+                                                                            class="maan-item-text">{{ (new \Illuminate\Support\Carbon($popularnewsall->date))->translatedFormat('d M, Y') }}</span>
                                                                     </li>
                                                                 </ul>
                                                             </div>
@@ -559,7 +559,7 @@
                                                                 </path>
                                                             </svg></span>
                                                         <span
-                                                            class="maan-item-text">{{ (new \Illuminate\Support\Carbon($lastnewstehnology->date))->format('d M, Y') }}</span>
+                                                            class="maan-item-text">{{ (new \Illuminate\Support\Carbon($lastnewstehnology->date))->translatedFormat('d M, Y') }}</span>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -663,7 +663,7 @@
                                                                                     </path>
                                                                                 </svg></span>
                                                                             <span
-                                                                                class="maan-item-text">{{ (new \Illuminate\Support\Carbon($lastnewsentertainment->date))->format('d M, Y') }}</span>
+                                                                                class="maan-item-text">{{ (new \Illuminate\Support\Carbon($lastnewsentertainment->date))->translatedFormat('d M, Y') }}</span>
                                                                         </li>
                                                                     </ul>
                                                                 </div>
@@ -711,7 +711,7 @@
                                                         </path>
                                                     </svg></span>
                                                 <span
-                                                    class="maan-item-text">{{ (new \Illuminate\Support\Carbon($lastnewsentertainment->date))->format('d M, Y') }}</span>
+                                                    class="maan-item-text">{{ (new \Illuminate\Support\Carbon($lastnewsentertainment->date))->translatedFormat('d M, Y') }}</span>
                                             </li>
                                         </ul>
                                     </div>
@@ -931,7 +931,7 @@
                                                                         </path>
                                                                     </svg></span>
                                                                 <span
-                                                                    class="maan-item-text">{{ (new \Illuminate\Support\Carbon($lastnewssports->date))->format('d M, Y') }}</span>
+                                                                    class="maan-item-text">{{ (new \Illuminate\Support\Carbon($lastnewssports->date))->translatedFormat('d M, Y') }}</span>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -1014,7 +1014,7 @@
                                                                 </path>
                                                             </svg></span>
                                                         <span
-                                                            class="maan-item-text">{{ (new \Illuminate\Support\Carbon($lastnewssports->date))->format('d M, Y') }}</span>
+                                                            class="maan-item-text">{{ (new \Illuminate\Support\Carbon($lastnewssports->date))->translatedFormat('d M, Y') }}</span>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -1109,7 +1109,7 @@
                                                     </path>
                                                 </svg></span>
                                             <span
-                                                class="maan-item-text">{{ (new \Illuminate\Support\Carbon($lastnewspolitics->date))->format('d M, Y') }}</span>
+                                                class="maan-item-text">{{ (new \Illuminate\Support\Carbon($lastnewspolitics->date))->translatedFormat('d M, Y') }}</span>
                                         </li>
                                     </ul>
                                 </div>
@@ -1249,7 +1249,7 @@
                                                     </path>
                                                 </svg></span>
                                             <span
-                                                class="maan-item-text">{{ $latestphotogallery->created_at->format('d M, Y') }}</span>
+                                                class="maan-item-text">{{ $latestphotogallery->created_at->translatedFormat('d M, Y') }}</span>
                                         </li>
                                     </ul>
                                 </div>

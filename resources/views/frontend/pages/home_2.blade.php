@@ -142,7 +142,7 @@
                                 </a>
                                 <div class="card-body">
                                     <div class="card-meta">
-                                        <span>{{ $reviewNews->updated_at->format('d M y') }}</span>
+                                        <span>{{ $reviewNews->updated_at->translatedFormat('d M y') }}</span>
                                         @php
                                             $wordCount = str_word_count($reviewNews->description);
                                             $minutesToRead = round($wordCount / 200);
@@ -236,7 +236,7 @@
                         <div class="card news10-topnews-card maantop-news-card">
                             @if ($advertisement)
                                 {!! $advertisement->sidebar_ads !!}
-                          
+
                             @endif
                         </div>
                     </div>
