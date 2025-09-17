@@ -36,6 +36,8 @@ use App\Http\Controllers\Admin\AcnooWebsiteSettingController;
 use App\Http\Controllers\Admin\FilepondController;
 use App\Http\Controllers\Admin\ProfileController;
 use App\Http\Controllers\TempDataTransformController;
+require __DIR__ . '/auth.php';
+
 
 Route::middleware(['throttle:web-user'])->group(function () {
     Route::get('/', [HomeController::class, 'maanIndex'])->name('home');
@@ -394,4 +396,3 @@ Route::get('/update', function () {
 Route::get('/test-data', [TempDataTransformController::class, 'startTransfer']);
 Route::get('/kutla-alboms', [TempDataTransformController::class, 'transferAlboms']);
 Route::get('/transfer-videos', [TempDataTransformController::class, 'transferVideos']);
-require __DIR__ . '/auth.php';

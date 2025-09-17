@@ -109,7 +109,8 @@ class NewsController extends Controller
 
     public function maanNewsDetailsShortLink($shortlink)
     {
-        $post = News::query()->select('id', 'shortlink')->whereShortlink($shortlink)->firstOrFail();
+        $post = News::query()->select('id', 'shortlink' , 'title')->whereShortlink($shortlink)->firstOrFail();
+        return redirect(return_post_link($post));
         return $this->maanNewsDetails($post->id);
     }
 }
