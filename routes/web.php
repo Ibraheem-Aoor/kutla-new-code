@@ -67,6 +67,7 @@ Route::middleware(['throttle:web-user'])->group(function () {
     // Route::get('/signin', [SigninController::class, 'maanSigninIndex'])->name('signin');
     // Route::post('/signin', [SigninController::class, 'maanSigninLogin']);
     // Route::get('/signout', [SigninController::class, 'maanSignout'])->name('signout');
+    Route::get('/{shortlink}', [\App\Http\Controllers\Frontend\NewsController::class, 'maanNewsDetailsShortLink'])->name('news.shortlink');
 
 });
 // Route admin all

@@ -173,7 +173,7 @@
                                                         </path>
                                                     </svg></span>
                                                 <span
-                                                    class="maan-item-text">{{ (new \Illuminate\Support\Carbon($allnewsall->date))->format('d M, Y') }}</span>
+                                                    class="maan-item-text">{{ (new \Illuminate\Support\Carbon($allnewsall->date))->translatedFormat('d M, Y') }}</span>
 
                                             </li>
                                         </ul>
@@ -227,7 +227,7 @@
                                                             </path>
                                                         </svg></span>
                                                     <span
-                                                        class="maan-item-text">{{ (new \Illuminate\Support\Carbon($popularnews->date))->format('d M, Y') }}</span>
+                                                        class="maan-item-text">{{ (new \Illuminate\Support\Carbon($popularnews->date))->translatedFormat('d M, Y') }}</span>
                                                 </li>
                                             </ul>
                                         </div>
@@ -304,7 +304,7 @@
                                                             </path>
                                                         </svg></span>
                                                     <span
-                                                        class="maan-item-text">{{ (new \Illuminate\Support\Carbon($recentallnews->date))->format('d M, Y') }}</span>
+                                                        class="maan-item-text">{{ (new \Illuminate\Support\Carbon($recentallnews->date))->translatedFormat('d M, Y') }}</span>
                                                 </li>
                                             </ul>
                                         </div>

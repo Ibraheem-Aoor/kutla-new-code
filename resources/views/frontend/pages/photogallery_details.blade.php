@@ -79,7 +79,7 @@
                                                             </path>
                                                         </svg></span>
                                                     <span
-                                                        class="maan-item-text">{{ $photogallery->created_at->format('d M, Y') }}</span>
+                                                        class="maan-item-text">{{ $photogallery->created_at->translatedFormat('d M, Y') }}</span>
                                                 </li>
                                             </ul>
                                         </div>
@@ -259,7 +259,7 @@
                                                         </path>
                                                     </svg></span>
                                                 <span
-                                                    class="maan-item-text">{{ $relatedphotogallery->created_at->format('d M, Y') }}</span>
+                                                    class="maan-item-text">{{ $relatedphotogallery->created_at->translatedFormat('d M, Y') }}</span>
                                             </li>
                                         </ul>
                                     </div>

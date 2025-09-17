@@ -40,7 +40,7 @@
                                 <a href="@if($popularnews->news_categoryslug){{ return_post_link($popularnews) }} @endif" class="fashion-ctg">{{ $popularnews->tags }}</a>
                                 <div class="post-author-date">
                                     <span class="author">{{__('by :')}} {{ $popularnews->reporter_name }} |</span>
-                                    <span class="date">{{  (new \Illuminate\Support\Carbon($popularnews->date))->format('d M Y') }}</span>
+                                    <span class="date">{{  (new \Illuminate\Support\Carbon($popularnews->date))->translatedFormat('d M Y') }}</span>
                                 </div>
                             </div>
                             <a href="@if($popularnews->news_categoryslug){{ return_post_link($popularnews) }} @endif" class="title">{{ $popularnews->title }}</a>
